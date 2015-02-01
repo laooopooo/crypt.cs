@@ -32,7 +32,7 @@ gulp.task('default', function(callback) {
  * Checks the package dependencies.
  * @method check
  */
-gulp.task('check', function(callback) {
+gulp.task('check', function() {
   return gulp.src('package.json')
     .pipe(plugins.david())
     .pipe(plugins.david.reporter);
@@ -49,7 +49,7 @@ gulp.task('clean', function(callback) {
     'var/release',
     util.format('var/%s-%s.exe', pkg.yuidoc.name.toLowerCase(), pkg.version)
   ];
-  
+
   del(items, callback);
 });
 
