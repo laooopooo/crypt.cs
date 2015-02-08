@@ -3,7 +3,6 @@
 .gitattributes text
 .gitignore text
 
-*.cmd text
 *.config text
 *.cs text diff=csharp
 *.csproj text
@@ -17,6 +16,7 @@
 *.sln text
 *.txt text
 *.xaml text
+*.yml text
 
 *.dll binary
 *.gif binary

@@ -1,3 +1,4 @@
+/*.komodoproject
 /*.suo
 /doc/api/
 /node_modules/
@@ -5,3 +6,4 @@
 /src/*/*proj.user
 /src/*/obj/
 /var/
+/www/**/*.map
