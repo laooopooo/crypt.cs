@@ -9,20 +9,20 @@
 //------------------------------------------------------------------------------
 
 namespace Crypt.Windows.Properties {
-    
-    
+
+
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "12.0.0.0")]
     internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
-        
+
         private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
-        
+
         public static Settings Default {
             get {
                 return defaultInstance;
             }
         }
-        
+
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("<?xml version=\"1.0\" encoding=\"utf-16\"?>\r\n<ArrayOfString xmlns:xsi=\"http://www.w3." +
@@ -33,16 +33,16 @@ namespace Crypt.Windows.Properties {
                 return ((global::System.Collections.Specialized.StringCollection)(this["SupportedLanguages"]));
             }
         }
-        
+
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("https://github.com/cedx/crypt.cs")]
+        [global::System.Configuration.DefaultSettingValueAttribute("https://bitbucket.org/cedx/crypt.cs")]
         public global::System.Uri WebSite {
             get {
                 return ((global::System.Uri)(this["WebSite"]));
             }
         }
-        
+
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("(Default)")]
@@ -54,19 +54,19 @@ namespace Crypt.Windows.Properties {
                 this["Culture"] = value;
             }
         }
-        
+
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("https://github.com/cedx/crypt.cs/issues")]
+        [global::System.Configuration.DefaultSettingValueAttribute("https://bitbucket.org/cedx/crypt.cs/issues")]
         public global::System.Uri BugTracker {
             get {
                 return ((global::System.Uri)(this["BugTracker"]));
             }
         }
-        
+
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("https://github.com/cedx/crypt.cs/wiki")]
+        [global::System.Configuration.DefaultSettingValueAttribute("https://bitbucket.org/cedx/crypt.cs/wiki")]
         public global::System.Uri TechnicalSupport {
             get {
                 return ((global::System.Uri)(this["TechnicalSupport"]));
