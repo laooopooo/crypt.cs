@@ -11,7 +11,7 @@ using System.Windows;
 
 [assembly: AssemblyTitle("Crypt.Windows")]
 [assembly: AssemblyDescription("String Encoding Tool")]
-[assembly: AssemblyVersion("0.4.2.0")]
+[assembly: AssemblyVersion("0.4.3.0")]
 
 [assembly: AssemblyProduct("Crypt.cs")]
 [assembly: AssemblyCompany("Cédric Belin")]

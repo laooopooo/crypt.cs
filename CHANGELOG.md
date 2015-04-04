@@ -1,6 +1,9 @@
 # Changelog
 This file contains highlights of what changes on each version of the [Crypt.cs](https://bitbucket.org/cedx/crypt.cs) application.
 
+#### Version 0.4.3
+- Upgraded the package dependencies.
+
 #### Version 0.4.2
 - Using [Gulp.js](http://gulpjs.com) as build system.
 

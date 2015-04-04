@@ -10,7 +10,7 @@ using System.Runtime.InteropServices;
 
 [assembly: AssemblyTitle("Crypt.Core")]
 [assembly: AssemblyDescription("String Encoding Tool")]
-[assembly: AssemblyVersion("0.4.2.0")]
+[assembly: AssemblyVersion("0.4.3.0")]
 
 [assembly: AssemblyProduct("Crypt.cs")]
 [assembly: AssemblyCompany("Cédric Belin")]
