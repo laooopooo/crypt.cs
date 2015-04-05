@@ -10,16 +10,16 @@
 &lt;/ArrayOfString&gt;</Value>
     </Setting>
     <Setting Name="WebSite" Type="System.Uri" Scope="Application">
-      <Value Profile="(Default)">https://bitbucket.org/cedx/crypt.cs</Value>
+      <Value Profile="(Default)">http://dev.belin.io/crypt.cs</Value>
     </Setting>
     <Setting Name="Culture" Type="System.Globalization.CultureInfo" Scope="User">
       <Value Profile="(Default)">(Default)</Value>
     </Setting>
     <Setting Name="BugTracker" Type="System.Uri" Scope="Application">
-      <Value Profile="(Default)">https://bitbucket.org/cedx/crypt.cs/issues</Value>
+      <Value Profile="(Default)">http://dev.belin.io/crypt.cs/issues</Value>
     </Setting>
     <Setting Name="TechnicalSupport" Type="System.Uri" Scope="Application">
-      <Value Profile="(Default)">https://bitbucket.org/cedx/crypt.cs/wiki</Value>
+      <Value Profile="(Default)">http://dev.belin.io/crypt.cs/wiki</Value>
     </Setting>
   </Settings>
 </SettingsFile>

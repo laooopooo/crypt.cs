@@ -1,8 +1,8 @@
 {
   "author": "Cédric Belin <cedric@belin.io>",
-  "bugs": "https://bitbucket.org/cedx/crypt.cs/issues",
+  "bugs": "http://dev.belin.io/crypt.cs/issues",
   "description": "Simple string encoder (Base64, CRC32, DES, MD, SHA...).",
-  "homepage": "https://bitbucket.org/cedx/crypt.cs",
+  "homepage": "http://dev.belin.io/crypt.cs",
   "license": "MIT",
   "name": "crypt-cs",
   "private": true,
@@ -35,9 +35,9 @@
     "unused": true
   },
   "yuidoc": {
-    "logo": "http://dev.belin.io/crypt.cs/favicon.ico",
+    "logo": "http://api.belin.io/crypt.cs/favicon.ico",
     "name": "Crypt.cs",
-    "url": "https://bitbucket.org/cedx/crypt.cs",
+    "url": "http://dev.belin.io/crypt.cs",
     "options": {
       "extension": ".cs",
       "outdir": "doc/api",
