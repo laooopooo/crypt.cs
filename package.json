@@ -6,6 +6,7 @@
   "license": "MIT",
   "name": "crypt-cs",
   "private": true,
+  "repository": "bitbucket:cedx/crypt.cs",
   "version": "0.4.3",
   "devDependencies": {
     "del": "^1.1.1",
@@ -33,10 +34,6 @@
     "trailing": true,
     "undef": true,
     "unused": true
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://bitbucket.org/cedx/crypt.cs.git"
   },
   "yuidoc": {
     "logo": "http://api.belin.io/crypt.cs/favicon.ico",
