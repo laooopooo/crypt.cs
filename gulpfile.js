@@ -70,7 +70,7 @@ gulp.task('doc', [ 'doc:assets' ], function(callback) {
 });
 
 gulp.task('doc:assets', function() {
-  return gulp.src([ 'www/apple-touch-icon.png', 'www/favicon.ico' ])
+  return gulp.src([ 'web/apple-touch-icon.png', 'web/favicon.ico' ])
     .pipe(gulp.dest('doc/api/assets'));
 });
 
