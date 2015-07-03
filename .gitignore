@@ -1,9 +1,6 @@
-/*.komodoproject
 /*.suo
 /doc/api/
-/node_modules/
-/npm-debug.log
 /src/*/*proj.user
 /src/*/obj/
 /var/
-/www/**/*.map
+/web/**/*.map
