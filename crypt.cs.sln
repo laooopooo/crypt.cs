@@ -15,12 +15,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "etc", "etc", "{411F00E7-524
 	ProjectSection(SolutionItems) = preProject
 		.gitattributes = .gitattributes
 		.gitignore = .gitignore
-		package.json = package.json
-	EndProjectSection
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "bin", "bin", "{269A3AF3-ACF8-4CD7-B91F-BEC98664EB75}"
-	ProjectSection(SolutionItems) = preProject
-		gulpfile.js = gulpfile.js
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "doc", "doc", "{C5A748D9-9973-40D3-BE09-7F6A8AEBF8D6}"
