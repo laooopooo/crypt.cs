@@ -36,7 +36,7 @@ namespace Crypt.Windows.Properties {
 
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("https://bitbucket.org/cedx/crypt.cs")]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://dev.belin.io/crypt.cs")]
         public global::System.Uri WebSite {
             get {
                 return ((global::System.Uri)(this["WebSite"]));

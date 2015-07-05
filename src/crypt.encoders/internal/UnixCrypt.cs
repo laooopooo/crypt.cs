@@ -1,51 +1,32 @@
-﻿/**
- * Implementation of the `DigiWar.Security.Cryptography.UnixCrypt` class.
- * @module encoders.internal.UnixCrypt
- */
+﻿/// @file
+/// Implementation of the `DigiWar.Security.Cryptography.UnixCrypt` class.
 
 namespace DigiWar.Security.Cryptography {
   using System;
   using System.Linq;
   using System.Text;
   
-  /**
-   * Provides the Unix `crypt()` encryption algorithm.
-   *
-   * This class is a port from Java source. I do not understand the underlying algorithms, I just converted it to C# and it works.
-   * Because I do not understand the underlying algorithms I cannot give most of the variables useful names. I have no clue what their
-   * significance is. I tried to give the variable names as much meaning as possible, but the original source just called them `a`, `b`, `c`, etc...
-   * 
-   * A very important thing to note is that all integers in this code are UNSIGNED integers! Do not change this, ever!!! It will seriously fuckup the working
-   * of this class. It uses major bitshifting and while Java gives you the >>> operator to signify a right bitshift without setting the MSB for
-   * a signed integer, C# does not have this operator and will just set the new MSB for you if it happened to be set the moment you bitshifted it.
-   * This is undesirable for most bitshifts and in the cases it did matter, I casted the variable back to an integer. This was only required where
-   * a variable was on the right-side of a bitshift operator.
-   * 
-   * @class DigiWar.Security.Cryptography.UnixCrypt
-   * @static
-   */
+  /// Provides the Unix `crypt()` encryption algorithm.
+  ///
+  /// This class is a port from Java source. I do not understand the underlying algorithms, I just converted it to C# and it works.
+  /// Because I do not understand the underlying algorithms I cannot give most of the variables useful names. I have no clue what their
+  /// significance is. I tried to give the variable names as much meaning as possible, but the original source just called them `a`, `b`, `c`, etc...
+  /// 
+  /// A very important thing to note is that all integers in this code are UNSIGNED integers! Do not change this, ever!!! It will seriously fuckup the working
+  /// of this class. It uses major bitshifting and while Java gives you the >>> operator to signify a right bitshift without setting the MSB for
+  /// a signed integer, C# does not have this operator and will just set the new MSB for you if it happened to be set the moment you bitshifted it.
+  /// This is undesirable for most bitshifts and in the cases it did matter, I casted the variable back to an integer. This was only required where
+  /// a variable was on the right-side of a bitshift operator.
   internal static class UnixCrypt {
   
-    /**
-     * The list with characters allowed in a Unix encrypted password.
-     * It is used to randomly chose two characters for use in the encryption.
-     * @property m_encryptionSaltCharacters
-     * @type System.String
-     * @static
-     * @final
-     * @private
-     */
+    /// @var m_encryptionSaltCharacters
+    /// The list with characters allowed in a Unix encrypted password.
+    /// It is used to randomly chose two characters for use in the encryption.
     private const string m_encryptionSaltCharacters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789./";
 
-    /**
-     * A lookup-table, presumably filled with some sort of encryption key. 
-     * It is used to calculate the index to the `m_SPTranslationTable` lookup-table.
-     * @property m_saltTranslation
-     * @type System.Array&lt;System.UInt32&gt;
-     * @static
-     * @final
-     * @private
-     */
+    /// @var m_saltTranslation
+    /// A lookup-table, presumably filled with some sort of encryption key. 
+    /// It is used to calculate the index to the `m_SPTranslationTable` lookup-table.
     private static readonly uint[] m_saltTranslation = {
       0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
       0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
@@ -65,32 +46,20 @@ namespace DigiWar.Security.Cryptography {
       0x3D, 0x3E, 0x3F, 0x00, 0x00, 0x00, 0x00, 0x00, 
     };
 
-    /**
-     * A lookup-table.
-     * It is used to calculate the index to the `m_skb` lookup-table.
-     * @property m_shifts
-     * @type System.Array&lt;System.Boolean&gt;
-     * @static
-     * @final
-     * @private
-     */
+    /// @var m_shifts
+    /// A lookup-table.
+    /// It is used to calculate the index to the `m_skb` lookup-table.
     private static readonly bool[] m_shifts = {
       false, false, true, true, true, true, true, true,
       false, true,  true, true, true, true, true, false
     };
 
-    /**
-     * A lookup-table.
-     * It is used the dynamically create the schedule lookup-table.
-     * @property m_skb
-     * @type System.Array&lt;System.UInt32&gt;
-     * @static
-     * @final
-     * @private
-     */
+    /// @var m_skb
+    /// A lookup-table.
+    /// It is used the dynamically create the schedule lookup-table.
     private static readonly uint[,] m_skb = {
       {
-        /* for C bits (numbered as per FIPS 46) 1 2 3 4 5 6 */
+        // for C bits (numbered as per FIPS 46) 1 2 3 4 5 6
         0x00000000, 0x00000010, 0x20000000, 0x20000010, 
         0x00010000, 0x00010010, 0x20010000, 0x20010010, 
         0x00000800, 0x00000810, 0x20000800, 0x20000810, 
@@ -109,7 +78,7 @@ namespace DigiWar.Security.Cryptography {
         0x00090820, 0x00090830, 0x20090820, 0x20090830, 
       },
       {
-        /* for C bits (numbered as per FIPS 46) 7 8 10 11 12 13 */
+        // for C bits (numbered as per FIPS 46) 7 8 10 11 12 13
         0x00000000, 0x02000000, 0x00002000, 0x02002000, 
         0x00200000, 0x02200000, 0x00202000, 0x02202000, 
         0x00000004, 0x02000004, 0x00002004, 0x02002004, 
@@ -128,7 +97,7 @@ namespace DigiWar.Security.Cryptography {
         0x10200404, 0x12200404, 0x10202404, 0x12202404, 
       },
       {
-        /* for C bits (numbered as per FIPS 46) 14 15 16 17 19 20 */
+        // for C bits (numbered as per FIPS 46) 14 15 16 17 19 20
         0x00000000, 0x00000001, 0x00040000, 0x00040001, 
         0x01000000, 0x01000001, 0x01040000, 0x01040001, 
         0x00000002, 0x00000003, 0x00040002, 0x00040003, 
@@ -147,7 +116,7 @@ namespace DigiWar.Security.Cryptography {
         0x09000202, 0x09000203, 0x09040202, 0x09040203, 
       },
       {
-        /* for C bits (numbered as per FIPS 46) 21 23 24 26 27 28 */
+        // for C bits (numbered as per FIPS 46) 21 23 24 26 27 28
         0x00000000, 0x00100000, 0x00000100, 0x00100100, 
         0x00000008, 0x00100008, 0x00000108, 0x00100108, 
         0x00001000, 0x00101000, 0x00001100, 0x00101100, 
@@ -166,7 +135,7 @@ namespace DigiWar.Security.Cryptography {
         0x04021008, 0x04121008, 0x04021108, 0x04121108, 
       },
       {
-        /* for D bits (numbered as per FIPS 46) 1 2 3 4 5 6 */
+        // for D bits (numbered as per FIPS 46) 1 2 3 4 5 6
         0x00000000, 0x10000000, 0x00010000, 0x10010000, 
         0x00000004, 0x10000004, 0x00010004, 0x10010004, 
         0x20000000, 0x30000000, 0x20010000, 0x30010000, 
@@ -185,7 +154,7 @@ namespace DigiWar.Security.Cryptography {
         0x20101004, 0x30101004, 0x20111004, 0x30111004, 
       },
       {
-        /* for D bits (numbered as per FIPS 46) 8 9 11 12 13 14 */
+        // for D bits (numbered as per FIPS 46) 8 9 11 12 13 14
         0x00000000, 0x08000000, 0x00000008, 0x08000008, 
         0x00000400, 0x08000400, 0x00000408, 0x08000408, 
         0x00020000, 0x08020000, 0x00020008, 0x08020008, 
@@ -204,7 +173,7 @@ namespace DigiWar.Security.Cryptography {
         0x02020401, 0x0A020401, 0x02020409, 0x0A020409, 
       },
       {
-        /* for D bits (numbered as per FIPS 46) 16 17 18 19 20 21 */
+        // for D bits (numbered as per FIPS 46) 16 17 18 19 20 21
         0x00000000, 0x00000100, 0x00080000, 0x00080100, 
         0x01000000, 0x01000100, 0x01080000, 0x01080100, 
         0x00000010, 0x00000110, 0x00080010, 0x00080110, 
@@ -223,7 +192,7 @@ namespace DigiWar.Security.Cryptography {
         0x01200210, 0x01200310, 0x01280210, 0x01280310, 
       },
       {
-        /* for D bits (numbered as per FIPS 46) 22 23 24 25 27 28 */
+        // for D bits (numbered as per FIPS 46) 22 23 24 25 27 28
         0x00000000, 0x04000000, 0x00040000, 0x04040000, 
         0x00000002, 0x04000002, 0x00040002, 0x04040002, 
         0x00002000, 0x04002000, 0x00042000, 0x04042000, 
@@ -243,18 +212,12 @@ namespace DigiWar.Security.Cryptography {
       }
     };
 
-    /**
-     * A lookup-table.
-     * It is used to calculate two integers that are used to encrypt the password.
-     * @property m_SPTranslationTable
-     * @type System.Array&lt;System.UInt32&gt;
-     * @static
-     * @final
-     * @private
-     */
+    /// @var m_SPTranslationTable
+    /// A lookup-table.
+    /// It is used to calculate two integers that are used to encrypt the password.
     private static readonly uint[,] m_SPTranslationTable = {
       {
-        /* nibble 0 */
+        // nibble 0
         0x00820200, 0x00020000, 0x80800000, 0x80820200,
         0x00800000, 0x80020200, 0x80020000, 0x80800000,
         0x80020200, 0x00820200, 0x00820000, 0x80000200,
@@ -273,7 +236,7 @@ namespace DigiWar.Security.Cryptography {
         0x80000000, 0x80820000, 0x00000200, 0x80020200,
       },
       {
-        /* nibble 1 */
+        // nibble 1
         0x10042004, 0x00000000, 0x00042000, 0x10040000,
         0x10000004, 0x00002004, 0x10002000, 0x00042000,
         0x00002000, 0x10040004, 0x00000004, 0x10002000,
@@ -292,7 +255,7 @@ namespace DigiWar.Security.Cryptography {
         0x10002004, 0x00000004, 0x10040000, 0x00042000,
       },
       {
-        /* nibble 2 */
+        // nibble 2
         0x41000000, 0x01010040, 0x00000040, 0x41000040,
         0x40010000, 0x01000000, 0x41000040, 0x00010040,
         0x01000040, 0x00010000, 0x01010000, 0x40000000,
@@ -311,7 +274,7 @@ namespace DigiWar.Security.Cryptography {
         0x41000000, 0x40010040, 0x00000040, 0x01010000,
       },
       {
-        /* nibble 3 */
+        // nibble 3
         0x00100402, 0x04000400, 0x00000002, 0x04100402,
         0x00000000, 0x04100000, 0x04000402, 0x00100002,
         0x04100400, 0x04000002, 0x04000000, 0x00000402,
@@ -330,7 +293,7 @@ namespace DigiWar.Security.Cryptography {
         0x00000402, 0x04000000, 0x04000002, 0x04100400,
       },
       {
-        /* nibble 4 */
+        // nibble 4
         0x02000000, 0x00004000, 0x00000100, 0x02004108,
         0x02004008, 0x02000100, 0x00004108, 0x02004000,
         0x00004000, 0x00000008, 0x02000008, 0x00004100,
@@ -349,7 +312,7 @@ namespace DigiWar.Security.Cryptography {
         0x00000008, 0x00004108, 0x02004000, 0x02000008,
       },
       {
-        /* nibble 5 */
+        // nibble 5
         0x20000010, 0x00080010, 0x00000000, 0x20080800,
         0x00080010, 0x00000800, 0x20000810, 0x00080000,
         0x00000810, 0x20080810, 0x00080800, 0x20000000,
@@ -368,7 +331,7 @@ namespace DigiWar.Security.Cryptography {
         0x20080000, 0x00000810, 0x00000010, 0x20080010,
       },
       {
-        /* nibble 6 */
+        // nibble 6
         0x00001000, 0x00000080, 0x00400080, 0x00400001,
         0x00401081, 0x00001001, 0x00001080, 0x00000000,
         0x00400000, 0x00400081, 0x00000081, 0x00401000,
@@ -387,7 +350,7 @@ namespace DigiWar.Security.Cryptography {
         0x00400001, 0x00401080, 0x00401000, 0x00001001,
       },
       {
-        /* nibble 7 */
+        // nibble 7
         0x08200020, 0x08208000, 0x00008020, 0x00000000,
         0x08008000, 0x00200020, 0x08200000, 0x08208020,
         0x00000020, 0x08000000, 0x00208000, 0x00008020,
@@ -407,16 +370,10 @@ namespace DigiWar.Security.Cryptography {
       }
     };
 
-    /**
-     * A lookup-table filled with printable characters.
-     * It is used to make sure the encrypted password contains only printable characters. It is filled with
-     * ASCII characters 46 - 122 (from the dot (`.`) until (including) the lowercase `'z'`).
-     * @property m_characterConversionTable
-     * @type System.Array&lt;System.UInt32&gt;
-     * @static
-     * @final
-     * @private
-     */
+    /// @var m_characterConversionTable
+    /// A lookup-table filled with printable characters.
+    /// It is used to make sure the encrypted password contains only printable characters. It is filled with
+    /// ASCII characters 46 - 122 (from the dot (`.`) until (including) the lowercase `'z'`).
     private static readonly uint[] m_characterConversionTable = {
       0x2E, 0x2F, 0x30, 0x31, 0x32, 0x33, 0x34, 0x35, 
       0x36, 0x37, 0x38, 0x39, 0x41, 0x42, 0x43, 0x44, 
@@ -428,26 +385,14 @@ namespace DigiWar.Security.Cryptography {
       0x73, 0x74, 0x75, 0x76, 0x77, 0x78, 0x79, 0x7A
     };
 
-    /**
-     * Marks the size of the dynamically created schedule lookup-table.
-     * @property m_desIterations
-     * @type System.UInt32
-     * @static
-     * @final
-     * @private
-     * @default 16
-     */
+    /// @var m_desIterations
+    /// Marks the size of the dynamically created schedule lookup-table.
     private const int m_desIterations = 16;
 
-    /**
-     * Converts four seperate bytes into one unsigned integer.
-     * @method FourBytesToInt
-     * @param {System.Array&lt;System.Byte&gt;} inputBytes The bytes to use for the conversion.
-     * @param {System.UInt32} offset The offset at which to start in the `inputBytes` buffer.
-     * @return {System.UInt32} The resulting unisgned integer.
-     * @static
-     * @private
-     */
+    /// Converts four seperate bytes into one unsigned integer.
+    /// @param inputBytes The bytes to use for the conversion.
+    /// @param offset The offset at which to start in the `inputBytes` buffer.
+    /// @returns The resulting unisgned integer.
     private static uint FourBytesToInt(byte[] inputBytes, uint offset) {
       // I used an int here because the compiler would complain the stuff below would require a cast from int to uint.
       // To keep the code cleaner I opted to use an int and cast it when I returned it.
@@ -461,15 +406,10 @@ namespace DigiWar.Security.Cryptography {
       return (uint)resultValue;
     }
 
-    /**
-     * Converts an unsigned integer into 4 seperate bytes.
-     * @method IntToFourBytes
-     * @param {System.UInt32} inputInt The unsigned integers to convert.
-     * @param {System.Array&lt;System.Byte&gt;} outputBytes The byte buffer into which to store the result.
-     * @param {System.UInt32} offset The offset to start storing at in the `outputBytes` buffer.
-     * @static
-     * @private
-     */
+    /// Converts an unsigned integer into 4 seperate bytes.
+    /// @param inputInt The unsigned integers to convert.
+    /// @param outputBytes The byte buffer into which to store the result.
+    /// @param offset The offset to start storing at in the `outputBytes` buffer.
     private static void IntToFourBytes(uint inputInt, byte[] outputBytes, uint offset) {
       outputBytes[offset++] = (byte)(inputInt & 0xFF);
       outputBytes[offset++] = (byte)((inputInt >> 8) & 0xFF);
@@ -477,17 +417,12 @@ namespace DigiWar.Security.Cryptography {
       outputBytes[offset++] = (byte)((inputInt >> 24) & 0xFF);
     }
 
-    /**
-     * Performs some operation on 4 unsigned integers. It's labeled `PERM_OP` in the original source.
-     * @method PermOperation
-     * @param {System.UInt32} firstInt The first unsigned integer to use.
-     * @param {System.UInt32} secondInt The second unsigned integer to use.
-     * @param {System.UInt32} thirdInt The third unsigned integer to use.
-     * @param {System.UInt32} fourthInt The fourth unsigned integer to use.
-     * @param {System.Array&lt;System.UInt32&gt;} operationResults An array of 2 unsigned integers that are the result of this operation.
-     * @static
-     * @private
-     */
+    /// Performs some operation on 4 unsigned integers. It's labeled `PERM_OP` in the original source.
+    /// @param firstInt The first unsigned integer to use.
+    /// @param secondInt The second unsigned integer to use.
+    /// @param thirdInt The third unsigned integer to use.
+    /// @param fourthInt The fourth unsigned integer to use.
+    /// @param operationResults An array of 2 unsigned integers that are the result of this operation.
     private static void PermOperation(uint firstInt, uint secondInt, uint thirdInt, uint fourthInt, uint[] operationResults) {
       // Because here an uint variable is at the right side of a bitshift, I needed to cast it to int. See the remarks of the class itself
       // for more details.
@@ -499,16 +434,11 @@ namespace DigiWar.Security.Cryptography {
       operationResults[1] = secondInt;
     }
 
-    /**
-     * Performs some operation on 3 integers. It's labeled `HPERM_OP` in the original source.
-     * @method HPermOperation
-     * @param {System.UInt32} firstInt The first unsigned integer to use.
-     * @param {System.Int32} secondInt The second signed integer to use.
-     * @param {System.UInt32} thirdInt The third unsigned integer to use.
-     * @return {System.UInt32} An integer that is the result of this operation.
-     * @static
-     * @private
-     */
+    /// Performs some operation on 3 integers. It's labeled `HPERM_OP` in the original source.
+    /// @param firstInt The first unsigned integer to use.
+    /// @param secondInt The second signed integer to use.
+    /// @param thirdInt The third unsigned integer to use.
+    /// @returns An integer that is the result of this operation.
     private static uint HPermOperation(uint firstInt, int secondInt, uint thirdInt) {
       // The variable secondInt is always used to calculate the number at the right side of a
       // bitshift. It is not used anywhere else, so I made the method parameter an int, to avoid
@@ -519,14 +449,9 @@ namespace DigiWar.Security.Cryptography {
       return returnInt;
     }
 
-    /**
-     * This method does some very complex bit manipulations.
-     * @method SetDESKey
-     * @param {System.Array&lt;System.Byte&gt;} encryptionKey The input data to use for the bit manipulations.
-     * @return {System.Array&lt;System.UInt32&gt;} `m_desIterations * 2` number of unsigned integers that are the result of the manipulations.
-     * @static
-     * @private
-     */
+    /// This method does some very complex bit manipulations.
+    /// @param encryptionKey The input data to use for the bit manipulations.
+    /// @returns `m_desIterations * 2` number of unsigned integers that are the result of the manipulations.
     private static uint[] SetDESKey(byte[] encryptionKey) {
       uint[] schedule = new uint[m_desIterations * 2];
 
@@ -596,19 +521,14 @@ namespace DigiWar.Security.Cryptography {
       return schedule;
     }
 
-    /**
-     * This method does some bit manipulations.
-     * @method DEncrypt
-     * @param {System.UInt32} left An input that is manipulated and then used for output.
-     * @param {System.UInt32} right This is used for the bit manipulation.
-     * @param {System.UInt32} scheduleIndex The index of an uint to use from the `schedule` array.
-     * @param {System.UInt32} firstSaltTranslator The translated salt for the first salt character.
-     * @param {System.UInt32} secondSaltTranslator The translated salt for the second salt character.
-     * @param {System.Array&lt;System.UInt32&gt;} schedule The schedule arrray calculated before.
-     * @return {System.UInt32} The result of these manipulations.
-     * @static
-     * @private
-     */
+    /// This method does some bit manipulations.
+    /// @param left An input that is manipulated and then used for output.
+    /// @param right This is used for the bit manipulation.
+    /// @param scheduleIndex The index of an uint to use from the `schedule` array.
+    /// @param firstSaltTranslator The translated salt for the first salt character.
+    /// @param secondSaltTranslator The translated salt for the second salt character.
+    /// @param schedule The schedule arrray calculated before.
+    /// @returns The result of these manipulations.
     private static uint DEncrypt(uint left, uint right, uint scheduleIndex, uint firstSaltTranslator, uint secondSaltTranslator, uint[] schedule) {
       uint firstInt, secondInt, thirdInt;
 
@@ -632,16 +552,11 @@ namespace DigiWar.Security.Cryptography {
       return left;
     }
 
-    /**
-     * Calculates two unsigned integers that are used to encrypt the password.
-     * @method Body
-     * @param {System.Array&lt;System.UInt32&gt;} schedule The schedule table calculated earlier.
-     * @param {System.UInt32} firstSaltTranslator The first translated salt character.
-     * @param {System.UInt32} secondSaltTranslator The second translated salt character.
-     * @return {System.Array&lt;System.UInt32&gt;} 2 unsigned integers in an array.
-     * @static
-     * @private
-     */
+    /// Calculates two unsigned integers that are used to encrypt the password.
+    /// @param schedule The schedule table calculated earlier.
+    /// @param firstSaltTranslator The first translated salt character.
+    /// @param secondSaltTranslator The second translated salt character.
+    /// @returns Two unsigned integers in an array.
     private static uint[] Body(uint[] schedule, uint firstSaltTranslator, uint secondSaltTranslator) {
       uint left = 0;
       uint right = 0;
@@ -694,16 +609,9 @@ namespace DigiWar.Security.Cryptography {
       return singleOutputKey;
     }
 
-    /**
-     * Encrypts the specified string using the Unix `crypt` algorithm.
-     * @method Crypt
-     * @param {System.String} [encryptionSalt] 2 random printable characters that are used to randomize the encryption.
-     * @param {System.String} textToEncrypt The text that must be encrypted.
-     * @return {System.String} The encrypted text.
-     * @throws {System.ArgumentException} The encryption salt must be 2 characters long.
-     * @throws {System.ArgumentNullException} The encryption salt or the text to encrypt is `null`.
-     * @static
-     */
+    /// Encrypts the specified string using the Unix `crypt` algorithm.
+    /// @param textToEncrypt The text that must be encrypted.
+    /// @returns The encrypted text.
     public static string Crypt(string textToEncrypt) {
       Random randomGenerator = new Random();
 
@@ -719,6 +627,12 @@ namespace DigiWar.Security.Cryptography {
       return Crypt(encryptionSalt, textToEncrypt);
     }
 
+    /// Encrypts the specified string using the Unix `crypt` algorithm.
+    /// @param encryptionSalt Two random printable characters that are used to randomize the encryption.
+    /// @param textToEncrypt The text that must be encrypted.
+    /// @returns The encrypted text.
+    /// @exception System.ArgumentException The encryption salt must be 2 characters long.
+    /// @exception System.ArgumentNullException The encryption salt or the text to encrypt is `null`.
     public static string Crypt(string encryptionSalt, string textToEncrypt) {
       if(encryptionSalt==null) throw new ArgumentNullException("encryptionSalt");
       if(textToEncrypt==null) throw new ArgumentNullException("textToEncrypt");
@@ -779,7 +693,7 @@ namespace DigiWar.Security.Cryptography {
           // The original source had the line below, I moved it outside the compound signs, because it will overwrite the value
           // a few times before incrementing the index. Where it is now it will be written only once.
           // Just to be on the safe side, I keep the original line here, so I know where it originally was.
-          //encryptionBuffer[index] = Convert.ToChar(m_characterConversionTable[passwordCharacter]);
+          // encryptionBuffer[index] = Convert.ToChar(m_characterConversionTable[passwordCharacter]);
         }
 
         encryptionBuffer[index] = Convert.ToChar(m_characterConversionTable[passwordCharacter]);

@@ -1,7 +1,8 @@
-﻿/**
- * The properties of `Crypt.Windows` assembly.
- * @module windows.properties.AssemblyInfo
- */
+﻿/// @file
+/// The properties of `Crypt.Windows` assembly.
+
+/// @namespace Crypt.Windows
+/// Provides the implementation of the Windows application.
 
 using System;
 using System.Reflection;
@@ -11,7 +12,7 @@ using System.Windows;
 
 [assembly: AssemblyTitle("Crypt.Windows")]
 [assembly: AssemblyDescription("String Encoding Tool")]
-[assembly: AssemblyVersion("0.4.3.0")]
+[assembly: AssemblyVersion("0.5.0.0")]
 
 [assembly: AssemblyProduct("Crypt.cs")]
 [assembly: AssemblyCompany("Cédric Belin")]

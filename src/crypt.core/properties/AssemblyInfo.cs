@@ -1,7 +1,8 @@
-﻿/**
- * The properties of `Crypt.Core` assembly.
- * @module core.properties.AssemblyInfo
- */
+﻿/// @file
+/// The properties of `Crypt.Core` assembly.
+
+/// @namespace Crypt
+/// Provides the implementation of the core library.
 
 using System;
 using System.Reflection;
@@ -10,7 +11,7 @@ using System.Runtime.InteropServices;
 
 [assembly: AssemblyTitle("Crypt.Core")]
 [assembly: AssemblyDescription("String Encoding Tool")]
-[assembly: AssemblyVersion("0.4.3.0")]
+[assembly: AssemblyVersion("0.5.0.0")]
 
 [assembly: AssemblyProduct("Crypt.cs")]
 [assembly: AssemblyCompany("Cédric Belin")]

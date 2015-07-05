@@ -1,7 +1,5 @@
-/**
- * Implementation of the `Crypt.Encoders.Sha1Encoder` class.
- * @module encoders.Sha1Encoder
- */
+/// @file
+/// Implementation of the `Crypt.Encoders.Sha1Encoder` class.
 
 namespace Crypt.Encoders {
   using System;
@@ -10,42 +8,27 @@ namespace Crypt.Encoders {
   using Crypt.Encoders.Properties;
   using MiniFramework.Security.Cryptography;
   
-  /**
-   * Represents the SHA-1 encoding method.
-   * @class Crypt.Encoders.Sha1Encoder
-   * @constructor
-   * @uses Crypt.IStringEncoder
-   */
+  /// Represents the SHA-1 encoding method.
   public class Sha1Encoder: IStringEncoder {
   
+    /// Initializes a new instance of the class.
     public Sha1Encoder() {}
 
-    /**
-     * The encoder description.
-     * @property Description
-     * @type System.String
-     * @final
-     */
+    /// @property Description
+    /// The encoder description.
     public string Description {
       get { return Resources.Sha1Description; }
     }
 
-    /**
-     * The encoder name.
-     * @property Name
-     * @type System.String
-     * @final
-     */
+    /// @property Name
+    /// The encoder name.
     public string Name {
       get { return "SHA-1"; }
     }
 
-    /**
-     * Encodes the specified string.
-     * @method Encode
-     * @param {System.String} text The string to encode.
-     * @return {System.String} The encoded string.
-     */
+    /// Encodes the specified string.
+    /// @param text The string to encode.
+    /// @returns The encoded string.
     public string Encode(string text) {
       return HashUtility.ComputeSha1(text);
     }

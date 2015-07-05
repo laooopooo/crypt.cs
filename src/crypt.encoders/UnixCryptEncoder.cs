@@ -1,7 +1,5 @@
-/**
- * Implementation of the `Crypt.Encoders.UnixCryptEncoder` class.
- * @module encoders.UnixCryptEncoder
- */
+/// @file
+/// Implementation of the `Crypt.Encoders.UnixCryptEncoder` class.
 
 namespace Crypt.Encoders {
   using System;
@@ -10,42 +8,27 @@ namespace Crypt.Encoders {
   using Crypt.Encoders.Properties;
   using DigiWar.Security.Cryptography;
   
-  /**
-   * Represents the UNIXCrypt encoding method.
-   * @class Crypt.Encoders.UnixCryptEncoder
-   * @constructor
-   * @uses Crypt.IStringEncoder
-   */
+  /// Represents the UNIXCrypt encoding method.
   public class UnixCryptEncoder: IStringEncoder {
   
+    /// Initializes a new instance of the class.
     public UnixCryptEncoder() {}
 
-    /**
-     * The encoder description.
-     * @property Description
-     * @type System.String
-     * @final
-     */
+    /// @property Description
+    /// The encoder description.
     public string Description {
       get { return Resources.UnixCryptDescription; }
     }
 
-    /**
-     * The encoder name.
-     * @property Name
-     * @type System.String
-     * @final
-     */
+    /// @property Name
+    /// The encoder name.
     public string Name {
       get { return "UNIXCrypt"; }
     }
 
-    /**
-     * Encodes the specified string.
-     * @method Encode
-     * @param {System.String} text The string to encode.
-     * @return {System.String} The encoded string.
-     */
+    /// Encodes the specified string.
+    /// @param text The string to encode.
+    /// @returns The encoded string.
     public string Encode(string text) {
       return UnixCrypt.Crypt(text);
     }

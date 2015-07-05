@@ -1,7 +1,5 @@
-/**
- * Implementation of the `Crypt.Encoders.Sha224Encoder` class.
- * @module encoders.Sha224Encoder
- */
+/// @file
+/// Implementation of the `Crypt.Encoders.Sha224Encoder` class.
 
 namespace Crypt.Encoders {
   using System;
@@ -12,42 +10,27 @@ namespace Crypt.Encoders {
   using MiniFramework.Text;
   using Mono.Security.Cryptography;
   
-  /**
-   * Represents the SHA-224 encoding method.
-   * @class Crypt.Encoders.Sha224Encoder
-   * @constructor
-   * @uses Crypt.IStringEncoder
-   */
+  /// Represents the SHA-224 encoding method.
   public class Sha224Encoder: IStringEncoder {
   
+    /// Initializes a new instance of the class.
     public Sha224Encoder() {}
 
-    /**
-     * The encoder description.
-     * @property Description
-     * @type System.String
-     * @final
-     */
+    /// @property Description
+    /// The encoder description.
     public string Description {
       get { return Resources.Sha224Description; }
     }
 
-    /**
-     * The encoder name.
-     * @property Name
-     * @type System.String
-     * @final
-     */
+    /// @property Name
+    /// The encoder name.
     public string Name {
       get { return "SHA-224"; }
     }
 
-    /**
-     * Encodes the specified string.
-     * @method Encode
-     * @param {System.String} text The string to encode.
-     * @return {System.String} The encoded string.
-     */
+    /// Encodes the specified string.
+    /// @param text The string to encode.
+    /// @returns The encoded string.
     public string Encode(string text) {
       var buffer=Encoding.Default.GetBytes(text);
       var hash=SHA224.Create().ComputeHash(buffer);

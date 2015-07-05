@@ -1,7 +1,5 @@
-/**
- * Implementation of the `Crypt.Encoders.DesEncoder` class.
- * @module encoders.DesEncoder
- */
+/// @file
+/// Implementation of the `Crypt.Encoders.DesEncoder` class.
 
 namespace Crypt.Encoders {
   using System;
@@ -11,42 +9,27 @@ namespace Crypt.Encoders {
 
   using Crypt.Encoders.Properties;
   
-  /**
-   * Represents the DES encoding method.
-   * @class Crypt.Encoders.DesEncoder
-   * @constructor
-   * @uses Crypt.IStringEncoder
-   */
+  /// Represents the DES encoding method.
   public class DesEncoder: IStringEncoder {
   
+    /// Initializes a new instance of the class.
     public DesEncoder() {}
 
-    /**
-     * The encoder description.
-     * @property Description
-     * @type System.String
-     * @final
-     */
+    /// @property Description
+    /// The encoder description.
     public string Description {
       get { return Resources.DesDescription; }
     }
 
-    /**
-     * The encoder name.
-     * @property Name
-     * @type System.String
-     * @final
-     */
+    /// @property Name
+    /// The encoder name.
     public string Name {
       get { return "DES"; }
     }
 
-    /**
-     * Encodes the specified string.
-     * @method Encode
-     * @param {System.String} text The string to encode.
-     * @return {System.String} The encoded string.
-     */
+    /// Encodes the specified string.
+    /// @param text The string to encode.
+    /// @returns The encoded string.
     public string Encode(string text) {
       var bytes=Encoding.Default.GetBytes(text);
       return Convert.ToBase64String(DES.Create().CreateEncryptor().TransformFinalBlock(bytes, 0, bytes.Length));

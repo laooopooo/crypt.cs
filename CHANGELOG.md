@@ -1,5 +1,10 @@
 # Changelog
-This file contains highlights of what changes on each version of the [Crypt.cs](https://bitbucket.org/cedx/crypt.cs) application.
+This file contains highlights of what changes on each version of the [Crypt.cs](http://dev.belin.io/crypt.cs) application.
+
+#### Version 0.5.0
+- Dropped the development dependencies based on [Node.js](https://nodejs.org).
+- Replaced the build system by custom scripts.
+- Replaced the documentation system by [Doxygen](http://www.doxygen.org).
 
 #### Version 0.4.3
 - Upgraded the package dependencies.

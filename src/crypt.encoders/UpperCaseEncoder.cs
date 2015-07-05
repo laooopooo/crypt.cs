@@ -1,7 +1,5 @@
-/**
- * Implementation of the `Crypt.Encoders.UpperCaseEncoder` class.
- * @module encoders.UpperCaseEncoder
- */
+/// @file
+/// Implementation of the `Crypt.Encoders.UpperCaseEncoder` class.
 
 namespace Crypt.Encoders {
   using System;
@@ -9,43 +7,28 @@ namespace Crypt.Encoders {
 
   using Crypt.Encoders.Properties;
   
-  /**
-   * Represents the UpperCase encoding method.
-   * @class Crypt.Encoders.UpperCaseEncoder
-   * @constructor
-   * @uses Crypt.IStringEncoder
-   */
+  /// Represents the UpperCase encoding method.
   public class UpperCaseEncoder: IStringEncoder {
   
+    /// Initializes a new instance of the class.
     public UpperCaseEncoder() {}
 
-    /**
-     * The encoder description.
-     * @property Description
-     * @type System.String
-     * @final
-     */
+    /// @property Description
+    /// The encoder description.
     public string Description {
       get { return Resources.UpperCaseDescription; }
     }
 
-    /**
-     * The encoder name.
-     * @property Name
-     * @type System.String
-     * @final
-     */
+    /// @property Name
+    /// The encoder name.
     public string Name {
       get { return "UpperCase"; }
     }
 
-    /**
-     * Encodes the specified string.
-     * @method Encode
-     * @param {System.String} text The string to encode.
-     * @return {System.String} The encoded string.
-     * @throws {System.ArgumentNullException} The specified string is `null`.
-     */
+    /// Encodes the specified string.
+    /// @param text The string to encode.
+    /// @returns The encoded string.
+    /// @exception System.ArgumentNullException The specified string is `null`.
     public string Encode(string text) {
       if(text==null) throw new ArgumentNullException("text");
       return text.ToUpperInvariant();
