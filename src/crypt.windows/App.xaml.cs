@@ -8,6 +8,8 @@ namespace Crypt.Windows {
   using System.Threading;
   using System.Windows;
 
+  /// @typedef Messages
+  /// The localized application messages.
   using Crypt.Windows.Properties;
   using Messages=Crypt.Windows.Properties.Resources;
 
