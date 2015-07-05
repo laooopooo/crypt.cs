@@ -1,7 +1,8 @@
-﻿/**
- * The properties of `Crypt.Windows` assembly.
- * @module windows.properties.AssemblyInfo
- */
+﻿/// @file
+/// The properties of `Crypt.Windows` assembly.
+
+/// @namespace Crypt.Windows
+/// Provides the implementation of the Windows application.
 
 using System;
 using System.Reflection;

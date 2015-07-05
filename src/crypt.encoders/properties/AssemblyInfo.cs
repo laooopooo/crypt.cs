@@ -1,7 +1,8 @@
-﻿/**
- * The properties of `Crypt.Encoders` assembly.
- * @module encoders.properties.AssemblyInfo
- */
+﻿/// @file
+/// The properties of `Crypt.Encoders` assembly.
+
+/// @namespace Crypt.Encoders
+/// Provides a set of string encoders.
 
 using System;
 using System.Reflection;

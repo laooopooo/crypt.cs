@@ -1,45 +1,28 @@
-﻿/**
- * Implementation of the `Crypt.IStringEncoder` interface.
- * @module core.IStringEncoder
- */
+﻿/// @file
+/// Implementation of the `Crypt.IStringEncoder` interface.
 
 namespace Crypt {
   using System;
   using System.Linq;
   
-  /**
-   * Represents a string encoder.
-   * @class Crypt.IStringEncoder
-   * @static
-   */
+  /// Represents a string encoder.
   public interface IStringEncoder {
   
-    /**
-     * The encoder description.
-     * @property Description
-     * @type System.String
-     * @final
-     */
+    /// @property Description
+    /// The encoder description.
     string Description {
       get;
     }
 
-    /**
-     * The encoder name.
-     * @property Name
-     * @type System.String
-     * @final
-     */
+    /// @property Name
+    /// The encoder name.
     string Name {
       get;
     }
 
-    /**
-     * Encodes the specified string.
-     * @method Encode
-     * @param {System.String} text The string to encode.
-     * @return {System.String} The encoded string.
-     */
+    /// Encodes the specified string.
+    /// @param text The string to encode.
+    /// @returns The encoded string.
     string Encode(string text);
   }
 }

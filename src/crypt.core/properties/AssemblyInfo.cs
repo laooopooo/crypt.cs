@@ -1,7 +1,8 @@
-﻿/**
- * The properties of `Crypt.Core` assembly.
- * @module core.properties.AssemblyInfo
- */
+﻿/// @file
+/// The properties of `Crypt.Core` assembly.
+
+/// @namespace Crypt
+/// Provides the implementation of the core library.
 
 using System;
 using System.Reflection;

@@ -1,7 +1,5 @@
-﻿/**
- * Implementation of the `Crypt.Windows.MainWindow` class.
- * @module windows.MainWindow
- */
+﻿/// @file
+/// Implementation of the `Crypt.Windows.MainWindow` class.
 
 namespace Crypt.Windows {
   using System;
@@ -24,14 +22,10 @@ namespace Crypt.Windows {
   using MiniFramework.Text;
   using MiniFramework.Windows;
 
-  /**
-   * Main window.
-   * @class Crypt.Windows.MainWindow
-   * @extends System.Windows.Window
-   * @constructor
-   */
+  /// The main window.
   public partial class MainWindow: Window {
 
+    /// Initializes a new instance of the class.
     public MainWindow() {
       this.InitializeComponent();
 
@@ -75,22 +69,13 @@ namespace Crypt.Windows {
       this.SetStatusTip(this.OutputTextBox, Messages.OutputTextBoxStatusTip);
     }
   
-    /**
-     * The "Show/Hide Control" command.
-     * @property ShowHideCommand
-     * @type System.Windows.Input.RoutedUICommand
-     * @static
-     * @final
-     */
+    /// @property ShowHideCommand
+    /// The "Show/Hide Control" command.
     public static readonly RoutedUICommand ShowHideCommand=new RoutedUICommand();
 
-    /**
-     * Shows the "About" box.
-     * @method OnAboutExecuted
-     * @param {System.Object} sender The source of the event.
-     * @param {System.Windows.Input.ExecutedRoutedEventArgs} e The event data.
-     * @private
-     */
+    /// Shows the "About" box.
+    /// @param sender The source of the event.
+    /// @param e The event data.
     private void OnAboutExecuted(object sender, ExecutedRoutedEventArgs e) {
       var startupPath=Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
 
@@ -112,72 +97,48 @@ namespace Crypt.Windows {
       window.ShowDialog();
     }
 
-    /**
-     * Closes the window.
-     * @method OnCloseExecuted
-     * @param {System.Object} sender The source of the event.
-     * @param {System.Windows.Input.ExecutedRoutedEventArgs} e The event data.
-     * @private
-     */
+    /// Closes the window.
+    /// @param sender The source of the event.
+    /// @param e The event data.
     private void OnCloseExecuted(object sender, ExecutedRoutedEventArgs e) {
       this.Close();
       e.Handled=true;
     }
 
-    /**
-     * Displays in the status bar the text associated to a control.
-     * @method OnControlMouseEnter
-     * @param {System.Object} sender The source of the event.
-     * @param {System.Windows.Input.MouseEventArgs} e The event data.
-     * @private
-     */
+    /// Displays in the status bar the text associated to a control.
+    /// @param sender The source of the event.
+    /// @param e The event data.
     private void OnControlMouseEnter(object sender, MouseEventArgs e) {
       this.StatusImage.Visibility=Visibility.Visible;
     }
 
-    /**
-     * Resets the status bar.
-     * @method OnControlMouseLeave
-     * @param {System.Object} sender The source of the event.
-     * @param {System.Windows.Input.MouseEventArgs} e The event data.
-     * @private
-     */
+    /// Resets the status bar.
+    /// @param sender The source of the event.
+    /// @param e The event data.
     private void OnControlMouseLeave(object sender, MouseEventArgs e) {
       this.StatusImage.Visibility=Visibility.Hidden;
       this.StatusLabel.Text=string.Empty;
     }
 
-    /**
-     * Encodes the string from the input field and puts the results into the output field.
-     * @method OnEncodeButtonClick
-     * @param {System.Object} sender The source of the event.
-     * @param {System.Windows.RoutedEventArgs} e The event data.
-     * @private
-     */
+    /// Encodes the string from the input field and puts the results into the output field.
+    /// @param sender The source of the event.
+    /// @param e The event data.
     private void OnEncodeButtonClick(object sender, RoutedEventArgs e) {
       this.OutputTextBox.Text=EncoderManager.Encoders[this.InputComboBox.SelectedIndex].Encode(this.InputTextBox.Text);
       e.Handled=true;
     }
 
-    /**
-     * Opens an URL in the default browser.
-     * @method OnOpenUrlExecuted
-     * @param {System.Object} sender The source of the event.
-     * @param {System.Windows.Input.ExecutedRoutedEventArgs} e The event data.
-     * @private
-     */
+    /// Opens an URL in the default browser.
+    /// @param sender The source of the event.
+    /// @param e The event data.
     private void OnOpenUrlExecuted(object sender, ExecutedRoutedEventArgs e) {
       new Uri(Settings.Default.WebSite, e.Parameter as Uri).Open();
       e.Handled=true;
     }
 
-    /**
-     * Shows or hides a control.
-     * @method OnShowHideExecuted
-     * @param {System.Object} sender The source of the event.
-     * @param {System.Windows.Input.ExecutedRoutedEventArgs} e The event data.
-     * @private
-     */
+    /// Shows or hides a control.
+    /// @param sender The source of the event.
+    /// @param e The event data.
     private void OnShowHideExecuted(object sender, ExecutedRoutedEventArgs e) {
       if(e.Parameter!=null) {
         var control=this.FindName(e.Parameter.ToString()) as Control;
@@ -186,13 +147,9 @@ namespace Crypt.Windows {
       }
     }
 
-    /**
-     * Changes the application language and restarts it.
-     * @method OnSelectedCultureChanged
-     * @param {System.Object} sender The source of the event.
-     * @param {System.Windows.DependencyPropertyChangedEventArgs} e The event data.
-     * @private
-     */
+    /// Changes the application language and restarts it.
+    /// @param sender The source of the event.
+    /// @param e The event data.
     private void OnSelectedCultureChanged(object sender, DependencyPropertyChangedEventArgs e) {
       var message=Messages.RestartProgramInfo.Split('|');
       TaskDialog.Show(null, message[1], message[0], null, MessageBoxButton.OK, MessageBoxImage.Information);
@@ -201,14 +158,10 @@ namespace Crypt.Windows {
       Application.Current.Restart();
     }
 
-    /**
-     * Sets the text to display in the status bar when the mouse hovers the specified control.
-     * @method SetStatusTip
-     * @param {System.Windows.Control} control The control associated to the specified text.
-     * @param {System.String} text The text to display in the status bar.
-     * @throws {System.ArgumentNullException} The specified control is `null`.
-     * @private
-     */
+    /// Sets the text to display in the status bar when the mouse hovers the specified control.
+    /// @param control The control associated to the specified text.
+    /// @param text The text to display in the status bar.
+    /// @exception System.ArgumentNullException The specified control is `null`.
     private void SetStatusTip(Control control, string text) {
       if(control==null) throw new ArgumentNullException("control");
       control.MouseEnter+=this.OnControlMouseEnter;

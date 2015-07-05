@@ -1,7 +1,8 @@
-﻿/**
- * The properties of `Crypt.Console` assembly.
- * @module console.properties.AssemblyInfo
- */
+﻿/// @file
+/// The properties of `Crypt.Console` assembly.
+
+/// @namespace Crypt.Console
+/// Provides the implementation of the console application.
 
 using System;
 using System.Reflection;

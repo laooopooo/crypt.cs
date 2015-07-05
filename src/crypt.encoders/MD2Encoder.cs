@@ -1,7 +1,5 @@
-/**
- * Implementation of the `Crypt.Encoders.MD2Encoder` class.
- * @module encoders.MD2Encoder
- */
+/// @file
+/// Implementation of the `Crypt.Encoders.MD2Encoder` class.
 
 namespace Crypt.Encoders {
   using System;
@@ -12,42 +10,27 @@ namespace Crypt.Encoders {
   using MiniFramework.Text;
   using Mono.Security.Cryptography;
   
-  /**
-   * Represents the MD2 encoding method.
-   * @class Crypt.Encoders.MD2Encoder
-   * @constructor
-   * @uses Crypt.IStringEncoder
-   */
+  /// Represents the MD2 encoding method.
   public class MD2Encoder: IStringEncoder {
   
+    /// Initializes a new instance of the class.
     public MD2Encoder() {}
 
-    /**
-     * The encoder description.
-     * @property Description
-     * @type System.String
-     * @final
-     */
+    /// @property Description
+    /// The encoder description.
     public string Description {
       get { return Resources.MD2Description; }
     }
 
-    /**
-     * The encoder name.
-     * @property Name
-     * @type System.String
-     * @final
-     */
+    /// @property Name
+    /// The encoder name.
     public string Name {
       get { return "MD2"; }
     }
 
-    /**
-     * Encodes the specified string.
-     * @method Encode
-     * @param {System.String} text The string to encode.
-     * @return {System.String} The encoded string.
-     */
+    /// Encodes the specified string.
+    /// @param text The string to encode.
+    /// @returns The encoded string.
     public string Encode(string text) {
       var buffer=Encoding.Default.GetBytes(text);
       var hash=MD2.Create().ComputeHash(buffer);

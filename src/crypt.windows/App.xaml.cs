@@ -1,7 +1,5 @@
-﻿/**
- * Implementation of the `Crypt.Windows.App` class.
- * @module windows.App
- */
+﻿/// @file
+/// Implementation of the `Crypt.Windows.App` class.
 
 namespace Crypt.Windows {
   using System;
@@ -17,26 +15,18 @@ namespace Crypt.Windows {
   using MiniFramework.Text;
   using MiniFramework.Windows;
 
-  /**
-   * WPF application.
-   * @class Crypt.Windows.App
-   * @extends System.Windows.Application
-   * @constructor
-   */
+  /// The WPF application.
   internal partial class App: Application {
   
+    /// Initializes a new instance of the class.
     public App() {
       this.Properties["Authors"]="Cédric Belin <cedric@belin.io>";
       this.Properties["License"]=OpenSourceLicenses.GnuGeneralPublicLicenseV3;
       this.Properties["Product"]=new AssemblyInfo(this.GetType().Assembly).Product;
     }
 
-    /**
-     * Checks that all conditions are met for application startup.
-     * If no string encoder can be found, a message is displayed to the user and the application terminated.
-     * @method CheckSetup
-     * @private
-     */
+    /// Checks that all conditions are met for application startup.
+    /// If no string encoder can be found, a message is displayed to the user and the application terminated.
     private void CheckSetup() {
       if(EncoderManager.Encoders.Count==0) {
         var message=Messages.AddInsNotFoundError.Split('|');
@@ -45,24 +35,16 @@ namespace Crypt.Windows {
       }
     }
 
-    /**
-     * Saves the application settings on exit.
-     * @method OnApplicationExit
-     * @param {System.Object} sender The source of the event.
-     * @param {System.Windows.ExitEventArgs} e The event data.
-     * @private
-     */
+    /// Saves the application settings on exit.
+    /// @param sender The source of the event.
+    /// @param e The event data.
     private void OnApplicationExit(object sender, ExitEventArgs e) {
       Settings.Default.Save();
     }
 
-    /**
-     * Sets the application culture on startup.
-     * @method OnApplicationStartup
-     * @param {System.Object} sender The source of the event.
-     * @param {System.Windows.StartupEventArgs} e The event data.
-     * @private
-     */
+    /// Sets the application culture on startup.
+    /// @param sender The source of the event.
+    /// @param e The event data.
     private void OnApplicationStartup(object sender, StartupEventArgs e) {
       var culture=Settings.Default.Culture;
       var languages=Settings.Default.SupportedLanguages;

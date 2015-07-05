@@ -1,7 +1,5 @@
-﻿/**
- * Implementation of the `Crypt.EncoderManager` class.
- * @module core.EncoderManager
- */
+﻿/// @file
+/// Implementation of the `Crypt.EncoderManager` class.
 
 namespace Crypt {
   using System;
@@ -10,20 +8,15 @@ namespace Crypt {
   using System.Linq;
   using System.Reflection;
   
-  /**
-   * Facilitates access to the string encoders at run time.
-   * @class Crypt.EncoderManager
-   * @static
-   */
+  /// Facilitates access to the string encoders at run time.
   public static class EncoderManager {
   
-    /**
-     * The list of all available string encoders.
-     * @property Encoders
-     * @type System.Collections.Generic.IList&lt;Crypt.IStringEncoder&gt;
-     * @static
-     */
+    /// @var encoders
+    /// The list of all available string encoders.
     private static IList<IStringEncoder> encoders;
+
+    /// @property Encoders
+    /// The list of all available string encoders.
     public static IList<IStringEncoder> Encoders {
       get {
         if(encoders==null) {

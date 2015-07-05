@@ -1,7 +1,5 @@
-/**
- * Implementation of the `Crypt.Encoders.RandomAsciiEncoder` class.
- * @module encoders.RandomAsciiEncoder
- */
+/// @file
+/// Implementation of the `Crypt.Encoders.RandomAsciiEncoder` class.
 
 namespace Crypt.Encoders {
   using System;
@@ -11,48 +9,31 @@ namespace Crypt.Encoders {
 
   using Crypt.Encoders.Properties;
   
-  /**
-   * Represents the RandomASCII encoding method.
-   * @class Crypt.Encoders.RandomAsciiEncoder
-   * @uses Crypt.IStringEncoder
-   */
+  /// Represents the RandomASCII encoding method.
   public class RandomAsciiEncoder: IStringEncoder {
     
+    /// Initializes a new instance of the class.
     public RandomAsciiEncoder() {}
   
-    /**
-     * Instance used to generate a random number sequence.
-     * @property random
-     * @private
-     */
+    /// @var random
+    /// Instance used to generate a random number sequence.
     private Random random=new Random();
 
-    /**
-     * The encoder description.
-     * @property Description
-     * @type System.String
-     * @final
-     */
+    /// @property Description
+    /// The encoder description.
     public string Description {
       get { return Resources.RandomAsciiDescription; }
     }
 
-    /**
-     * The encoder name.
-     * @property Name
-     * @type System.String
-     * @final
-     */
+    /// @property Name
+    /// The encoder name.
     public string Name {
       get { return "RandomASCII"; }
     }
 
-    /**
-     * Encodes the specified string.
-     * @method Encode
-     * @param {System.String} text The string to encode.
-     * @return {System.String} The encoded string.
-     */
+    /// Encodes the specified string.
+    /// @param text The string to encode.
+    /// @returns The encoded string.
     public string Encode(string text) {
       if(string.IsNullOrEmpty(text)) return text;
 
