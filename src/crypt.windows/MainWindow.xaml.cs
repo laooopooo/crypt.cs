@@ -69,7 +69,7 @@ namespace Crypt.Windows {
       this.SetStatusTip(this.OutputTextBox, Messages.OutputTextBoxStatusTip);
     }
   
-    /// @property ShowHideCommand
+    /// @var ShowHideCommand
     /// The "Show/Hide Control" command.
     public static readonly RoutedUICommand ShowHideCommand=new RoutedUICommand();
 
