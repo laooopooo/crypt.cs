@@ -3,6 +3,7 @@
 .gitattributes text
 .gitignore text
 
+*.cmd text
 *.config text
 *.cs text diff=csharp
 *.csproj text
@@ -13,6 +14,7 @@
 *.md text
 *.resx text
 *.settings text
+*.sh text
 *.sln text
 *.txt text
 *.xaml text

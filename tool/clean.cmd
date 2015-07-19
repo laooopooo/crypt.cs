@@ -1,4 +1,6 @@
 @echo off
+REM Deletes all generated files and reset any saved state.
+
 cd "%~dp0\.."
 
 set file="var\*.exe"

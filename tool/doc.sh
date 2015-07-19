@@ -1,4 +1,5 @@
 #!/bin/sh
+# Builds the documentation.
 
 basedir=`dirname "$0"`
 cd "$basedir/.."
