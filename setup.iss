@@ -3,7 +3,7 @@
 #define AppName "Crypt.cs"
 #define AppPublisher "Cédric Belin"
 #define AppURL "http://dev.belin.io/crypt.cs"
-#define AppVersion "0.5.0"
+#define AppVersion "0.5.1"
 
 [Setup]
 AppCopyright = Copyright (c) 2009-2015 {#AppPublisher}
