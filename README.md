@@ -3,6 +3,14 @@ Simple string encoder (Base64, CRC32, DES, MD, SHA...), implemented in [C#](http
 
 ![Screenshot](http://dev.belin.io/crypt.cs/img/screenshot.png)
 
+## Requirements
+The latest [.NET Framework](https://www.microsoft.com/net) version.
+If you plan to play with the sources, you will also need the latest versions of the following products:
+
+- [Doxygen](http://www.doxygen.org)
+- [Inno Setup](http://www.jrsoftware.org/isinfo.php)
+- [NAnt](http://nant.sourceforge.net)
+
 ## Command Line Interface
 In addition to the graphical user interface, you can also use the application from the command prompt:
 
