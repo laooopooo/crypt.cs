@@ -9,7 +9,7 @@
       <arg value="/verbosity:minimal"/>
     </exec>
 
-    <exec if="${platform=='Win32NT'}" program="C:/Program Files (x86)/MSBuild/12.0/Bin/MSBuild.exe">
+    <exec if="${platform=='Win32NT'}" program="C:/Program Files (x86)/MSBuild/14.0/Bin/MSBuild.exe">
       <arg value="/nologo"/>
       <arg value="/property:Configuration=${config}"/>
       <arg value="/verbosity:minimal"/>
@@ -45,13 +45,13 @@
   <target name="dist" depends="build.release">
     <exec if="${platform=='Win32NT'}" program="C:/Program Files (x86)/Inno Setup/ISCC.exe">
       <arg value="/qp"/>
-      <arg value="setup.iss"/>
+      <arg file="setup.iss"/>
     </exec>
   </target>
 
   <target name="doc">
     <exec program="doxygen">
-      <arg value="doc/api.doxyfile"/>
+      <arg file="doc/api.doxyfile"/>
     </exec>
 
     <copy file="web/favicon.ico" todir="doc/api"/>
