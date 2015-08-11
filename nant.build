@@ -1,32 +1,33 @@
 <?xml version="1.0"?>
 <project default="dist" name="crypt.cs">
+  <property name="configuration" value="Release"/>
   <property name="platform" value="${operating-system::get-platform(environment::get-operating-system())}"/>
 
-  <target name="build">
+  <target name="build" description="Compiles the source files.">
     <exec if="${platform=='Unix'}" program="xbuild">
       <arg value="/nologo"/>
-      <arg value="/property:Configuration=${config}"/>
+      <arg value="/property:Configuration=${configuration}"/>
       <arg value="/verbosity:minimal"/>
     </exec>
 
     <exec if="${platform=='Win32NT'}" program="C:/Program Files (x86)/MSBuild/14.0/Bin/MSBuild.exe">
       <arg value="/nologo"/>
-      <arg value="/property:Configuration=${config}"/>
+      <arg value="/property:Configuration=${configuration}"/>
       <arg value="/verbosity:minimal"/>
     </exec>
   </target>
 
   <target name="build.debug">
-    <property name="config" value="Debug"/>
+    <property name="configuration" value="Debug"/>
     <call target="build"/>
   </target>
 
   <target name="build.release">
-    <property name="config" value="Release"/>
+    <property name="configuration" value="Release"/>
     <call target="build"/>
   </target>
 
-  <target name="clean">
+  <target name="clean" description="Deletes all generated files and reset any saved state.">
     <delete dir="src/crypt.console/obj"/>
     <delete dir="src/crypt.core/obj"/>
     <delete dir="src/crypt.encoders/obj"/>
@@ -36,20 +37,20 @@
     <delete dir="var/release"/>
 
     <delete>
-      <fileset>
-        <include name="var/*.exe" />
-      </fileset>
+	  <fileset>
+        <include name="var/*.exe"/>
+	  </fileset>
     </delete>
   </target>
 
-  <target name="dist" depends="build.release">
+  <target name="dist" depends="build.release" description="Creates a distribution file for this program.">
     <exec if="${platform=='Win32NT'}" program="C:/Program Files (x86)/Inno Setup/ISCC.exe">
       <arg value="/qp"/>
       <arg file="setup.iss"/>
     </exec>
   </target>
 
-  <target name="doc">
+  <target name="doc" description="Builds the documentation.">
     <exec program="doxygen">
       <arg file="doc/api.doxyfile"/>
     </exec>
