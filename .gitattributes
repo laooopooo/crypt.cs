@@ -9,14 +9,12 @@
 *.css text
 *.html text diff=html
 *.js text
-*.json text
 *.md text
 *.resx text
 *.settings text
 *.sln text
 *.txt text
 *.xaml text
-*.yml text
 
 *.dll binary
 *.gif binary
