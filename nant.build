@@ -37,9 +37,9 @@
     <delete dir="var/release"/>
 
     <delete>
-	  <fileset>
+      <fileset>
         <include name="var/*.exe"/>
-	  </fileset>
+      </fileset>
     </delete>
   </target>
 
