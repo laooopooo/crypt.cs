@@ -1,7 +1,7 @@
-﻿#define AppBase "crypt"
+#define AppBase "crypt"
 #define AppExeName AppBase+".windows.exe"
 #define AppName "Crypt.cs"
-#define AppPublisher "Cédric Belin"
+#define AppPublisher "C�dric Belin"
 #define AppURL "http://dev.belin.io/crypt.cs"
 #define AppVersion "0.5.1"
 
