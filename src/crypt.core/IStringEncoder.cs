@@ -2,8 +2,6 @@
 /// Implementation of the `Crypt.IStringEncoder` interface.
 
 namespace Crypt {
-  using System;
-  using System.Linq;
   
   /// Represents a string encoder.
   public interface IStringEncoder {

@@ -3,7 +3,6 @@
 
 namespace Crypt.Windows {
   using System;
-  using System.Collections.Generic;
   using System.Globalization;
   using System.IO;
   using System.Linq;
@@ -13,8 +12,8 @@ namespace Crypt.Windows {
   using System.Windows.Controls.Primitives;
   using System.Windows.Input;
 
-  using Crypt.Windows.Properties;
-  using Messages=Crypt.Windows.Properties.Resources;
+  using Messages=Properties.Resources;
+  using Properties;
 
   using MiniFramework;
   using MiniFramework.Drawing;

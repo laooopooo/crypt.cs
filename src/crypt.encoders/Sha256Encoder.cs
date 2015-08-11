@@ -2,12 +2,9 @@
 /// Implementation of the `Crypt.Encoders.Sha256Encoder` class.
 
 namespace Crypt.Encoders {
-  using System;
-  using System.Linq;
-  
-  using Crypt.Encoders.Properties;
   using MiniFramework.Security.Cryptography;
-  
+  using Properties;
+
   /// Represents the SHA-256 encoding method.
   public class Sha256Encoder: IStringEncoder {
   

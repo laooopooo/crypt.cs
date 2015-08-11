@@ -3,10 +3,9 @@
 
 namespace Crypt.Encoders {
   using System;
-  using System.Linq;
   using System.Text;
 
-  using Crypt.Encoders.Properties;
+  using Properties;
   
   /// Represents the Base64 encoding method.
   public class Base64Encoder: IStringEncoder {

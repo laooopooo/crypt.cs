@@ -2,20 +2,18 @@
 /// Implementation of the `Crypt.Windows.App` class.
 
 namespace Crypt.Windows {
-  using System;
   using System.Globalization;
-  using System.Linq;
   using System.Threading;
   using System.Windows;
-
-  /// @typedef Messages
-  /// The localized application messages.
-  using Crypt.Windows.Properties;
-  using Messages=Crypt.Windows.Properties.Resources;
 
   using MiniFramework.Reflection;
   using MiniFramework.Text;
   using MiniFramework.Windows;
+
+  /// @typedef Messages
+  /// The localized application messages.
+  using Messages=Properties.Resources;
+  using Properties;
 
   /// The WPF application.
   internal partial class App: Application {

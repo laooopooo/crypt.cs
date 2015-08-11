@@ -3,11 +3,10 @@
 
 namespace Crypt.Encoders {
   using System;
-  using System.Linq;
 
-  using Crypt.Encoders.Properties;
   using MiniFramework;
-  
+  using Properties;
+
   /// Represents the TitleCase encoding method.
   public class TitleCaseEncoder: IStringEncoder {
   

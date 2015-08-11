@@ -3,9 +3,7 @@
 
 namespace Crypt.Encoders {
   using System;
-  using System.Linq;
-
-  using Crypt.Encoders.Properties;
+  using Properties;
   
   /// Represents the UpperCase encoding method.
   public class UpperCaseEncoder: IStringEncoder {

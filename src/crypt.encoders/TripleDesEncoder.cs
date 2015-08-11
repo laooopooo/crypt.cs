@@ -3,11 +3,10 @@
 
 namespace Crypt.Encoders {
   using System;
-  using System.Linq;
   using System.Security.Cryptography;
   using System.Text;
 
-  using Crypt.Encoders.Properties;
+  using Properties;
   
   /// Represents the TripleDES encoding method.
   public class TripleDesEncoder: IStringEncoder {

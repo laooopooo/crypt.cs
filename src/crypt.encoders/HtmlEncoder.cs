@@ -2,12 +2,9 @@
 /// Implementation of the `Crypt.Encoders.HtmlEncoder` class.
 
 namespace Crypt.Encoders {
-  using System;
-  using System.Linq;
-  
-  using Crypt.Encoders.Properties;
   using MiniFramework.Web;
-  
+  using Properties;
+
   /// Represents the HTML encoding method.
   public class HtmlEncoder: IStringEncoder {
   

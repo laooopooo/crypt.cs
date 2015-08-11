@@ -1,5 +1,5 @@
-/*.suo
 /*.userprefs
+/.vs/
 /doc/api/
 /src/*/*proj.user
 /src/*/obj/

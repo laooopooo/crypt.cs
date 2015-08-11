@@ -2,12 +2,9 @@
 /// Implementation of the `Crypt.Encoders.MD5Encoder` class.
 
 namespace Crypt.Encoders {
-  using System;
-  using System.Linq;
-  
-  using Crypt.Encoders.Properties;
   using MiniFramework.Security.Cryptography;
-  
+  using Properties;
+
   /// Represents the MD5 encoding method.
   public class MD5Encoder: IStringEncoder {
   

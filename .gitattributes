@@ -1,8 +1,10 @@
 * text=auto
 
+.editorconfig text
 .gitattributes text
 .gitignore text
 
+*.build text
 *.config text
 *.cs text diff=csharp
 *.csproj text

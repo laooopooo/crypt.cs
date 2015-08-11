@@ -2,11 +2,8 @@
 /// Implementation of the `Crypt.Encoders.XmlEncoder` class.
 
 namespace Crypt.Encoders {
-  using System;
-  using System.Linq;
   using System.Web;
-
-  using Crypt.Encoders.Properties;
+  using Properties;
   
   /// Represents the XML encoding method.
   public class XmlEncoder: IStringEncoder {

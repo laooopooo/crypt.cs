@@ -7,9 +7,9 @@ namespace Crypt.Console {
   using System.Globalization;
   using System.Linq;
 
-  using Crypt.Console.Properties;
   using MiniFramework.Reflection;
   using Mono.Options;
+  using Properties;
 
   /// The console application.
   internal static class Program {

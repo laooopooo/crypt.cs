@@ -2,14 +2,12 @@
 /// Implementation of the `Crypt.Encoders.MD4Encoder` class.
 
 namespace Crypt.Encoders {
-  using System;
-  using System.Linq;
   using System.Text;
   
-  using Crypt.Encoders.Properties;
   using MiniFramework.Text;
   using Mono.Security.Cryptography;
-  
+  using Properties;
+
   /// Represents the MD4 encoding method.
   public class MD4Encoder: IStringEncoder {
   

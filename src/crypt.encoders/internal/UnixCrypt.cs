@@ -3,7 +3,6 @@
 
 namespace DigiWar.Security.Cryptography {
   using System;
-  using System.Linq;
   using System.Text;
   
   /// Provides the Unix `crypt()` encryption algorithm.

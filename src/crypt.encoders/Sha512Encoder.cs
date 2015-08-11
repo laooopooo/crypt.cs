@@ -2,12 +2,9 @@
 /// Implementation of the `Crypt.Encoders.Sha512Encoder` class.
 
 namespace Crypt.Encoders {
-  using System;
-  using System.Linq;
-  
-  using Crypt.Encoders.Properties;
   using MiniFramework.Security.Cryptography;
-  
+  using Properties;
+
   /// Represents the SHA-512 encoding method.
   public class Sha512Encoder: IStringEncoder {
   

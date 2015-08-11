@@ -4,10 +4,9 @@
 namespace Crypt.Encoders {
   using System;
   using System.Globalization;
-  using System.Linq;
   using System.Text;
 
-  using Crypt.Encoders.Properties;
+  using Properties;
   
   /// Represents the RandomASCII encoding method.
   public class RandomAsciiEncoder: IStringEncoder {

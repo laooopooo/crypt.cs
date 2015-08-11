@@ -2,13 +2,11 @@
 /// Implementation of the `Crypt.Encoders.Crc32Encoder` class.
 
 namespace Crypt.Encoders {
-  using System;
   using System.Globalization;
-  using System.Linq;
   
-  using Crypt.Encoders.Properties;
   using MiniFramework.Security.Cryptography;
-  
+  using Properties;
+
   /// Represents the CRC32 encoding method.
   public class Crc32Encoder: IStringEncoder {
   
