@@ -38,7 +38,7 @@ namespace Crypt.Encoders {
 
       var builder=new StringBuilder(text.Length);
       foreach(var item in text) {
-        if(this.random.Next(3)==0) builder.Append(item);
+        if(random.Next(3)==0) builder.Append(item);
         else builder.Append(string.Format(CultureInfo.InvariantCulture, "&#{0};", (int) item));
       }
 
