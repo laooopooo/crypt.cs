@@ -12,6 +12,7 @@
 *.html text diff=html
 *.js text
 *.md text
+*.properties text
 *.resx text
 *.settings text
 *.sln text
