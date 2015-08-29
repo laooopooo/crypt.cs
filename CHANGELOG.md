@@ -1,6 +1,9 @@
 # Changelog
 This file contains highlights of what changes on each version of the [Crypt.cs](http://dev.belin.io/crypt.cs) application.
 
+#### Version 0.5.2
+- Added support for [SonarQube](http://www.sonarqube.org) code analyzer.
+
 #### Version 0.5.1
 - Replaced the custom build scripts by [NAnt](http://nant.sourceforge.net).
 

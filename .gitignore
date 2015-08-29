@@ -1,4 +1,5 @@
 /*.userprefs
+/.sonar/
 /.vs/
 /doc/api/
 /src/*/*proj.user

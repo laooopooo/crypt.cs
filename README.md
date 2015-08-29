@@ -10,6 +10,7 @@ If you plan to play with the sources, you will also need the latest versions of 
 - [Doxygen](http://www.doxygen.org)
 - [Inno Setup](http://www.jrsoftware.org/isinfo.php)
 - [NAnt](http://nant.sourceforge.net)
+- [SonarQube Runner](http://docs.sonarqube.org/display/SONAR/Installing+and+Configuring+SonarQube+Runner)
 
 ## Command Line Interface
 In addition to the graphical user interface, you can also use the application from the command prompt:

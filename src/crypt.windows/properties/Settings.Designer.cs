@@ -57,7 +57,7 @@ namespace Crypt.Windows.Properties {
 
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("https://bitbucket.org/cedx/crypt.cs/issues")]
+        [global::System.Configuration.DefaultSettingValueAttribute("https://github.com/cedx/crypt.cs/issues")]
         public global::System.Uri BugTracker {
             get {
                 return ((global::System.Uri)(this["BugTracker"]));
@@ -66,7 +66,7 @@ namespace Crypt.Windows.Properties {
 
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("https://bitbucket.org/cedx/crypt.cs/wiki")]
+        [global::System.Configuration.DefaultSettingValueAttribute("https://github.com/cedx/crypt.cs/wiki")]
         public global::System.Uri TechnicalSupport {
             get {
                 return ((global::System.Uri)(this["TechnicalSupport"]));

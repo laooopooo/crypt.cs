@@ -17,6 +17,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "etc", "etc", "{411F00E7-524
 		.gitattributes = .gitattributes
 		.gitignore = .gitignore
 		nant.build = nant.build
+		sonar-project.properties = sonar-project.properties
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "doc", "doc", "{C5A748D9-9973-40D3-BE09-7F6A8AEBF8D6}"
@@ -25,6 +26,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "doc", "doc", "{C5A748D9-997
 		CHANGELOG.md = CHANGELOG.md
 		LICENSE.txt = LICENSE.txt
 		README.md = README.md
+		doc\api.doxyfile = doc\api.doxyfile
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "web", "web", "{7D049722-47BD-4A81-9BB5-112D1F5B5739}"
@@ -38,22 +40,27 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{D02BFB1B-0D75-4C4B-9DF7-3760FC7A0046}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D02BFB1B-0D75-4C4B-9DF7-3760FC7A0046}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D02BFB1B-0D75-4C4B-9DF7-3760FC7A0046}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D02BFB1B-0D75-4C4B-9DF7-3760FC7A0046}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B8B70DBF-F383-4285-BE0D-2948AA847B0E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B8B70DBF-F383-4285-BE0D-2948AA847B0E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B8B70DBF-F383-4285-BE0D-2948AA847B0E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B8B70DBF-F383-4285-BE0D-2948AA847B0E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{90C905BF-40CE-4F36-AF0F-5466E730079F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{90C905BF-40CE-4F36-AF0F-5466E730079F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{90C905BF-40CE-4F36-AF0F-5466E730079F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{90C905BF-40CE-4F36-AF0F-5466E730079F}.Release|Any CPU.Build.0 = Release|Any CPU
 		{4CED9EB4-CD48-4B03-BED6-9922391B899F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{4CED9EB4-CD48-4B03-BED6-9922391B899F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4CED9EB4-CD48-4B03-BED6-9922391B899F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4CED9EB4-CD48-4B03-BED6-9922391B899F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{90C905BF-40CE-4F36-AF0F-5466E730079F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{90C905BF-40CE-4F36-AF0F-5466E730079F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{90C905BF-40CE-4F36-AF0F-5466E730079F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{90C905BF-40CE-4F36-AF0F-5466E730079F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B8B70DBF-F383-4285-BE0D-2948AA847B0E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B8B70DBF-F383-4285-BE0D-2948AA847B0E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B8B70DBF-F383-4285-BE0D-2948AA847B0E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B8B70DBF-F383-4285-BE0D-2948AA847B0E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D02BFB1B-0D75-4C4B-9DF7-3760FC7A0046}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D02BFB1B-0D75-4C4B-9DF7-3760FC7A0046}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D02BFB1B-0D75-4C4B-9DF7-3760FC7A0046}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D02BFB1B-0D75-4C4B-9DF7-3760FC7A0046}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		StartupItem = src\crypt.encoders\crypt.encoders.csproj
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
