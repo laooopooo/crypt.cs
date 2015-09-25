@@ -29,4 +29,4 @@ Options:
 ```
 
 ## License
-[Crypt.cs](http://dev.belin.io/crypt.cs) is distributed under the MIT License.
+[Crypt.cs](http://dev.belin.io/crypt.cs) is distributed under the Apache License, version 2.0.
