@@ -20,9 +20,9 @@ namespace Crypt.Windows {
   
     /// Initializes a new instance of the class.
     public App() {
-      this.Properties["Authors"]="Cédric Belin <cedric@belin.io>";
-      this.Properties["License"]=OpenSourceLicenses.GnuGeneralPublicLicenseV3;
-      this.Properties["Product"]=new AssemblyInfo(this.GetType().Assembly).Product;
+      Properties["Authors"]="Cédric Belin <cedric@belin.io>";
+      Properties["License"]=OpenSourceLicenses.GnuGeneralPublicLicenseV3;
+      Properties["Product"]=new AssemblyInfo(GetType().Assembly).Product;
     }
 
     /// Checks that all conditions are met for application startup.
@@ -31,7 +31,7 @@ namespace Crypt.Windows {
       if(EncoderManager.Encoders.Count==0) {
         var message=Messages.AddInsNotFoundError.Split('|');
         TaskDialog.Show(null, message[1], message[0], null, MessageBoxButton.OK, MessageBoxImage.Error);
-        this.Shutdown(1);
+        Shutdown(1);
       }
     }
 
@@ -58,7 +58,7 @@ namespace Crypt.Windows {
 
       Thread.CurrentThread.CurrentCulture=culture;
       Thread.CurrentThread.CurrentUICulture=culture;
-      this.CheckSetup();
+      CheckSetup();
     }
   }
 }

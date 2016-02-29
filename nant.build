@@ -1,16 +1,15 @@
 <?xml version="1.0"?>
 <project default="dist" name="crypt.cs">
   <property name="configuration" value="Release"/>
-  <property name="platform" value="${operating-system::get-platform(environment::get-operating-system())}"/>
 
   <target name="build" description="Compiles the source files.">
-    <exec if="${platform=='Unix'}" program="xbuild">
+    <exec if="${platform::is-unix()}" program="xbuild">
       <arg value="/nologo"/>
       <arg value="/property:Configuration=${configuration}"/>
       <arg value="/verbosity:minimal"/>
     </exec>
 
-    <exec if="${platform=='Win32NT'}" program="C:/Program Files (x86)/MSBuild/14.0/Bin/MSBuild.exe">
+    <exec if="${platform::is-windows()}" program="C:/Program Files (x86)/MSBuild/14.0/Bin/MSBuild.exe">
       <arg value="/nologo"/>
       <arg value="/property:Configuration=${configuration}"/>
       <arg value="/verbosity:minimal"/>
@@ -44,7 +43,7 @@
   </target>
 
   <target name="dist" depends="build.release" description="Creates a distribution file for this program.">
-    <exec if="${platform=='Win32NT'}" program="C:/Program Files (x86)/Inno Setup/ISCC.exe">
+    <exec if="${platform::is-windows()}" program="C:/Program Files (x86)/Inno Setup/ISCC.exe">
       <arg value="/qp"/>
       <arg file="setup.iss"/>
     </exec>
