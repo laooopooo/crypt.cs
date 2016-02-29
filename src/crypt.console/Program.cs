@@ -16,7 +16,7 @@ namespace Crypt.Console {
   
     /// @var appInfo
     /// Informations about the application assembly.
-    private static AssemblyInfo appInfo=new AssemblyInfo(typeof(Program).Assembly);
+    private static AssemblyInfo appInfo = new AssemblyInfo(typeof(Program).Assembly);
     
     /// @var options
     /// The command line options.
@@ -28,19 +28,19 @@ namespace Crypt.Console {
       CheckSetup();
 
       // Set default command line options.
-      bool printHelp=false;
-      bool printList=false;
-      bool printVersion=false;
+      bool printHelp = false;
+      bool printList = false;
+      bool printVersion = false;
 
-      options=new OptionSet {
-        { "?|h|help", Resources.HelpOption, x=> printHelp=(x!=null) },
-        { "l|list", Resources.ListOption, x=> printList=(x!=null) },
-        { "v|version", Resources.VersionOption, x=> printVersion=(x!=null) }
+      options = new OptionSet {
+        { "?|h|help", Resources.HelpOption, x => printHelp = (x != null) },
+        { "l|list", Resources.ListOption, x => printList = (x != null) },
+        { "v|version", Resources.VersionOption, x => printVersion = (x != null) }
       };
 
       // Parse command line arguments.
-      List<string> parameters=null;
-      try { parameters=options.Parse(args); }
+      List<string> parameters = null;
+      try { parameters = options.Parse(args); }
 
       catch(OptionException e) {
         Console.WriteLine();
@@ -68,7 +68,7 @@ namespace Crypt.Console {
       }
 
       // Encode the specified string.
-      if(parameters==null || parameters.Count!=2) {
+      if(parameters == null || parameters.Count != 2) {
         Console.WriteLine();
         Console.WriteLine(Resources.SyntaxError);
         PrintUsage();
@@ -81,7 +81,7 @@ namespace Crypt.Console {
     /// Checks that all conditions are met for application startup.
     /// If no string encoder can be found, a message is displayed to the user and the application terminated.
     private static void CheckSetup() {
-      if(EncoderManager.Encoders.Count==0) {
+      if(EncoderManager.Encoders.Count == 0) {
         Console.WriteLine();
         Console.WriteLine(Resources.AddInsNotFoundError);
         Console.WriteLine();
@@ -96,15 +96,15 @@ namespace Crypt.Console {
     private static void PrintEncodedString(string encodingMethod, string stringToEncode) {
       Console.WriteLine();
 
-      var encoder=EncoderManager.Encoders.FirstOrDefault(x=>x.Name.ToUpperInvariant()==encodingMethod.ToUpperInvariant());
-      if(encoder==null) {
+      var encoder = EncoderManager.Encoders.FirstOrDefault(x => x.Name.ToUpperInvariant() == encodingMethod.ToUpperInvariant());
+      if(encoder == null) {
         Console.WriteLine(Resources.UnknownEncoderError);
         PrintEncoderList();
         return;
       }
 
-      var encodedString=encoder.Encode(stringToEncode);
-      Console.WriteLine(encodedString.Length>0 ? encodedString : "\"\"");
+      var encodedString = encoder.Encode(stringToEncode);
+      Console.WriteLine(encodedString.Length > 0 ? encodedString : "\"\"");
       Console.WriteLine();
     }
 

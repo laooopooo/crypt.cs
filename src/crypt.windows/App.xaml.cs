@@ -28,7 +28,7 @@ namespace Crypt.Windows {
     /// Checks that all conditions are met for application startup.
     /// If no string encoder can be found, a message is displayed to the user and the application terminated.
     private void CheckSetup() {
-      if(EncoderManager.Encoders.Count==0) {
+      if(EncoderManager.Encoders.Count == 0) {
         var message=Messages.AddInsNotFoundError.Split('|');
         TaskDialog.Show(null, message[1], message[0], null, MessageBoxButton.OK, MessageBoxImage.Error);
         Shutdown(1);

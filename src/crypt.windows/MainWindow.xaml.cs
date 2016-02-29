@@ -31,7 +31,7 @@ namespace Crypt.Windows {
       // Culture selectors.
       foreach(var item in Settings.Default.SupportedLanguages) CultureMenu.Cultures.AddLanguage(item, false);
       CultureMenu.SelectedCulture=CultureInfo.CurrentUICulture;
-      CultureMenu.SelectedCultureChanged+=OnSelectedCultureChanged;
+      CultureMenu.SelectedCultureChanged += OnSelectedCultureChanged;
 
       var cultureButton=CultureMenu.ToCultureButton();
       cultureButton.Tag="CultureControlStatusTip";
@@ -42,7 +42,7 @@ namespace Crypt.Windows {
 
       foreach(MenuItem topLevelItem in MenuBar.Items) {
         foreach(var item in topLevelItem.Items.OfType<MenuItem>()) {
-          var property=(item.Tag!=null) ? item.Tag.ToString() : ((RoutedCommand) item.Command).Name+"CommandStatusTip";
+          var property=(item.Tag != null) ? item.Tag.ToString() : ((RoutedCommand) item.Command).Name+"CommandStatusTip";
           
           var text=Reflector.GetPropertyValue(typeof(Messages), property).ToString();
           if(text.Contains("{0}")) text=string.Format(CultureInfo.CurrentCulture, text, product);
@@ -53,7 +53,7 @@ namespace Crypt.Windows {
 
       // Toolbar buttons.
       foreach(var item in ToolBar.Items.OfType<ButtonBase>()) {
-        var property=(item.Tag!=null) ? item.Tag.ToString() : ((RoutedCommand) item.Command).Name+"CommandStatusTip";
+        var property=(item.Tag != null) ? item.Tag.ToString() : ((RoutedCommand) item.Command).Name+"CommandStatusTip";
           
         var text=Reflector.GetPropertyValue(typeof(Messages), property).ToString();
         if(text.Contains("{0}")) text=string.Format(CultureInfo.CurrentCulture, text, product);
@@ -139,9 +139,9 @@ namespace Crypt.Windows {
     /// @param sender The source of the event.
     /// @param e The event data.
     private void OnShowHideExecuted(object sender, ExecutedRoutedEventArgs e) {
-      if(e.Parameter!=null) {
+      if(e.Parameter != null) {
         var control=FindName(e.Parameter.ToString()) as Control;
-        if(control!=null) control.Visibility=(control.IsVisible) ? Visibility.Collapsed : Visibility.Visible;
+        if(control != null) control.Visibility=(control.IsVisible) ? Visibility.Collapsed : Visibility.Visible;
         e.Handled=true;
       }
     }
@@ -162,10 +162,10 @@ namespace Crypt.Windows {
     /// @param text The text to display in the status bar.
     /// @exception System.ArgumentNullException The specified control is `null`.
     private void SetStatusTip(Control control, string text) {
-      if(control==null) throw new ArgumentNullException("control");
-      control.MouseEnter+=OnControlMouseEnter;
-      control.MouseEnter+=delegate { StatusLabel.Text=text; };
-      control.MouseLeave+=OnControlMouseLeave;
+      if(control == null) throw new ArgumentNullException("control");
+      control.MouseEnter += OnControlMouseEnter;
+      control.MouseEnter += delegate { StatusLabel.Text=text; };
+      control.MouseLeave += OnControlMouseLeave;
     }
   }
 }

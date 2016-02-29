@@ -30,7 +30,7 @@ namespace Crypt.Encoders {
     /// @param text The string to encode.
     /// @returns The encoded string.
     public string Encode(string text) {
-      var bytes=Encoding.Default.GetBytes(text);
+      var bytes = Encoding.Default.GetBytes(text);
       return Convert.ToBase64String(TripleDES.Create().CreateEncryptor().TransformFinalBlock(bytes, 0, bytes.Length));
     }
   }

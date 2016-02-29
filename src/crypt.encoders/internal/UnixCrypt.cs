@@ -633,8 +633,8 @@ namespace DigiWar.Security.Cryptography {
     /// @exception System.ArgumentException The encryption salt must be 2 characters long.
     /// @exception System.ArgumentNullException The encryption salt or the text to encrypt is `null`.
     public static string Crypt(string encryptionSalt, string textToEncrypt) {
-      if(encryptionSalt==null) throw new ArgumentNullException("encryptionSalt");
-      if(textToEncrypt==null) throw new ArgumentNullException("textToEncrypt");
+      if(encryptionSalt == null) throw new ArgumentNullException("encryptionSalt");
+      if(textToEncrypt == null) throw new ArgumentNullException("textToEncrypt");
           
       bool isSaltTooSmall = (encryptionSalt.Length < 2);
       if(isSaltTooSmall) throw new ArgumentException("The encryption salt must be 2 characters long.");

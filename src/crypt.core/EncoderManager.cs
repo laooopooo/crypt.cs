@@ -19,7 +19,7 @@ namespace Crypt {
     /// The list of all available string encoders.
     public static IList<IStringEncoder> Encoders {
       get {
-        if(encoders==null) {
+        if(encoders == null) {
           var list=new SortedList<string, IStringEncoder>();
 
           var startupPath=Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
@@ -32,7 +32,7 @@ namespace Crypt {
                   from type in Assembly.LoadFrom(file).GetTypes()
                   where type.IsVisible
                     && !type.IsAbstract
-                    && type.GetConstructor(Type.EmptyTypes)!=null
+                    && type.GetConstructor(Type.EmptyTypes) != null
                     && typeof(IStringEncoder).IsAssignableFrom(type)
                   select (IStringEncoder) Activator.CreateInstance(type);
 

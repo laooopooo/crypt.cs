@@ -28,7 +28,7 @@ namespace Crypt.Encoders {
     /// @returns The encoded string.
     /// @exception System.ArgumentNullException The specified string is `null`.
     public string Encode(string text) {
-      if(text==null) throw new ArgumentNullException("text");
+      if(text == null) throw new ArgumentNullException("text");
       return text.ToLowerInvariant();
     }
   }

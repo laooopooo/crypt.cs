@@ -30,8 +30,8 @@ namespace Crypt.Encoders {
     /// @param text The string to encode.
     /// @returns The encoded string.
     public string Encode(string text) {
-      var buffer=Encoding.Default.GetBytes(text);
-      var hash=MD2.Create().ComputeHash(buffer);
+      var buffer = Encoding.Default.GetBytes(text);
+      var hash = MD2.Create().ComputeHash(buffer);
       return HexCodec.GetString(hash);
     }
   }

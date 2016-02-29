@@ -16,7 +16,7 @@ namespace Crypt.Encoders {
   
     /// @var random
     /// Instance used to generate a random number sequence.
-    private Random random=new Random();
+    private Random random = new Random();
 
     /// @property Description
     /// The encoder description.
@@ -36,9 +36,9 @@ namespace Crypt.Encoders {
     public string Encode(string text) {
       if(string.IsNullOrEmpty(text)) return text;
 
-      var builder=new StringBuilder(text.Length);
+      var builder = new StringBuilder(text.Length);
       foreach(var item in text) {
-        if(random.Next(3)==0) builder.Append(item);
+        if(random.Next(3) == 0) builder.Append(item);
         else builder.Append(string.Format(CultureInfo.InvariantCulture, "&#{0};", (int) item));
       }
 
