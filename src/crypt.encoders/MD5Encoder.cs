@@ -2,14 +2,14 @@
 /// Implementation of the `Crypt.Encoders.MD5Encoder` class.
 
 namespace Crypt.Encoders {
-  using MiniFramework.Security.Cryptography;
-  using Properties;
+  using System.Globalization;
+  using System.Security.Cryptography;
+  using System.Text;
+
+  using Crypt.Encoders.Properties;
 
   /// Represents the MD5 encoding method.
   public class MD5Encoder: IStringEncoder {
-  
-    /// Initializes a new instance of the class.
-    public MD5Encoder() {}
 
     /// @property Description
     /// The encoder description.
@@ -27,7 +27,12 @@ namespace Crypt.Encoders {
     /// @param text The string to encode.
     /// @returns The encoded string.
     public string Encode(string text) {
-      return HashUtility.ComputeMD5(text);
+      var buffer = Encoding.Default.GetBytes(text);
+      var hash = MD5.Create().ComputeHash(buffer);
+
+      var builder = new StringBuilder(hash.Length * 2);
+      foreach(var item in hash) builder.Append(item.ToString("x2", CultureInfo.InvariantCulture));
+      return builder.ToString();
     }
   }
 }

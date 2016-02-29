@@ -3,13 +3,10 @@
 
 namespace Crypt.Encoders {
   using System.Web;
-  using Properties;
+  using Crypt.Encoders.Properties;
   
   /// Represents the XML encoding method.
   public class XmlEncoder: IStringEncoder {
-  
-    /// Initializes a new instance of the class.
-    public XmlEncoder() {}
 
     /// @property Description
     /// The encoder description.

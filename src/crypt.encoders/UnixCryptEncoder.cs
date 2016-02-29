@@ -2,14 +2,11 @@
 /// Implementation of the `Crypt.Encoders.UnixCryptEncoder` class.
 
 namespace Crypt.Encoders {
+  using Crypt.Encoders.Properties;
   using DigiWar.Security.Cryptography;
-  using Properties;
 
   /// Represents the UNIXCrypt encoding method.
   public class UnixCryptEncoder: IStringEncoder {
-  
-    /// Initializes a new instance of the class.
-    public UnixCryptEncoder() {}
 
     /// @property Description
     /// The encoder description.

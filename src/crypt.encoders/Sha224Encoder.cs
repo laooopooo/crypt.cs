@@ -2,17 +2,14 @@
 /// Implementation of the `Crypt.Encoders.Sha224Encoder` class.
 
 namespace Crypt.Encoders {
+  using System.Globalization;
   using System.Text;
   
-  using MiniFramework.Text;
+  using Crypt.Encoders.Properties;
   using Mono.Security.Cryptography;
-  using Properties;
 
   /// Represents the SHA-224 encoding method.
   public class Sha224Encoder: IStringEncoder {
-  
-    /// Initializes a new instance of the class.
-    public Sha224Encoder() {}
 
     /// @property Description
     /// The encoder description.
@@ -32,7 +29,10 @@ namespace Crypt.Encoders {
     public string Encode(string text) {
       var buffer = Encoding.Default.GetBytes(text);
       var hash = SHA224.Create().ComputeHash(buffer);
-      return HexCodec.GetString(hash);
+
+      var builder = new StringBuilder(hash.Length * 2);
+      foreach(var item in hash) builder.Append(item.ToString("x2", CultureInfo.InvariantCulture));
+      return builder.ToString();
     }
   }
 }

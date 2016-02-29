@@ -3,13 +3,10 @@
 
 namespace Crypt.Encoders {
   using System;
-  using Properties;
+  using Crypt.Encoders.Properties;
   
   /// Represents the UpperCase encoding method.
   public class UpperCaseEncoder: IStringEncoder {
-  
-    /// Initializes a new instance of the class.
-    public UpperCaseEncoder() {}
 
     /// @property Description
     /// The encoder description.

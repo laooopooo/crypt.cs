@@ -3,13 +3,10 @@
 
 namespace Crypt.Encoders {
   using System;
-  using Properties;
+  using Crypt.Encoders.Properties;
   
   /// Represents the LowerCase encoding method.
   public class LowerCaseEncoder: IStringEncoder {
-  
-    /// Initializes a new instance of the class.
-    public LowerCaseEncoder() {}
 
     /// @property Description
     /// The encoder description.

@@ -5,13 +5,10 @@ namespace Crypt.Encoders {
   using System;
   using System.Text;
 
-  using Properties;
+  using Crypt.Encoders.Properties;
   
   /// Represents the Base64 encoding method.
   public class Base64Encoder: IStringEncoder {
-  
-    /// Initializes a new instance of the class.
-    public Base64Encoder() {}
 
     /// @property Description
     /// The encoder description.
@@ -29,8 +26,8 @@ namespace Crypt.Encoders {
     /// @param text The string to encode.
     /// @returns The encoded string.
     public string Encode(string text) {
-      var bytes = Encoding.Default.GetBytes(text);
-      return Convert.ToBase64String(bytes);
+      var buffer = Encoding.Default.GetBytes(text);
+      return Convert.ToBase64String(buffer);
     }
   }
 }

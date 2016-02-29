@@ -76,6 +76,8 @@
     <Compile Include="UnixCryptEncoder.cs" />
     <Compile Include="UpperCaseEncoder.cs" />
     <Compile Include="XmlEncoder.cs" />
+    <Compile Include="internal\Crc32.cs" />
+    <Compile Include="internal\Crc32Managed.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\crypt.core\crypt.core.csproj">

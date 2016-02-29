@@ -6,17 +6,14 @@ namespace Crypt.Encoders {
   using System.Globalization;
   using System.Text;
 
-  using Properties;
+  using Crypt.Encoders.Properties;
   
   /// Represents the RandomASCII encoding method.
   public class RandomAsciiEncoder: IStringEncoder {
-    
-    /// Initializes a new instance of the class.
-    public RandomAsciiEncoder() {}
   
     /// @var random
     /// Instance used to generate a random number sequence.
-    private Random random = new Random();
+    private readonly Random random = new Random();
 
     /// @property Description
     /// The encoder description.

@@ -1,7 +1,7 @@
 # Crypt.cs
 Simple string encoder (Base64, CRC32, DES, MD, SHA...), implemented in [C#](https://www.microsoft.com/net).
 
-![Screenshot](http://dev.belin.io/crypt.cs/img/screenshot.png)
+![Screenshot](http://www.belin.io/crypt.cs/img/screenshot.png)
 
 ## Requirements
 The latest [.NET Framework](https://www.microsoft.com/net) version.
