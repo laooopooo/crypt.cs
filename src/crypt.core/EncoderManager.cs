@@ -20,15 +20,15 @@ namespace Crypt {
     public static IList<IStringEncoder> Encoders {
       get {
         if(encoders == null) {
-          var list=new SortedList<string, IStringEncoder>();
+          var list = new SortedList<string, IStringEncoder>();
 
-          var startupPath=Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-          var addinsPath=Path.Combine(startupPath, "addins");
+          var startupPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+          var addinsPath = Path.Combine(startupPath, "addins");
 
           if(Directory.Exists(addinsPath)) {
             foreach(var file in Directory.GetFiles(addinsPath, "*.dll")) {
               try {
-                var query=
+                var query =
                   from type in Assembly.LoadFrom(file).GetTypes()
                   where type.IsVisible
                     && !type.IsAbstract
@@ -43,7 +43,7 @@ namespace Crypt {
             }
           }
 
-          encoders=list.Values;
+          encoders = list.Values;
         }
 
         return encoders;
